@@ -54,7 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :events
+  resources :events do
+
+  end
 
   root 'events#index'
 end
