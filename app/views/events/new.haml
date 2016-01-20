@@ -1,5 +1,8 @@
-new event
+%h1 Create a New Event
 
-= form_for @event do |f|
-  = f.text_field :name
-  = f.text_area :description
+.form#new_event
+  = form_for @event do |f|
+    %label Name
+    = f.text_field :name
+    %label Description
+    = f.text_area :description
