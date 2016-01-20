@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   private
 
+  # Strong params for security
   def event_params
     params.require(:event).permit(:name, :description, :date, :start_time)
   end

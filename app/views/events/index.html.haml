@@ -1,0 +1,11 @@
+%h1 All Events
+
+%a{ href: new_event_url } Create a New Event
+
+.events_scroll
+  - @events.each do |event|
+    .event
+      %label{ for: :name } Name
+      .value#name= event.name
+      %label{ for: :description } Description
+      .value= event.description
