@@ -58,5 +58,8 @@ Rails.application.routes.draw do
 
   end
 
+  resources :venues do
+  end
+
   root 'events#index'
 end
