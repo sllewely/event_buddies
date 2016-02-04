@@ -18,3 +18,5 @@
 
 .idea
 .byebug_history
+*.keep
+*.DS_Store
