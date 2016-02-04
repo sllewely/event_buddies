@@ -29,6 +29,7 @@ gem 'haml'
 gem 'annotate'
 gem 'twitter-bootstrap-rails'
 
+gem 'rake', '~> 10.5'
 # Paperclip allows for user picture uploads and dynamic stuff. Uncomment if we want to use.
 # gem 'paperclip'
 # gem 'paperclip-meta'
