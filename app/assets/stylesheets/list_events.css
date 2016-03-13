@@ -5,15 +5,9 @@
   position: absolute;
   position-top: 0;
   padding: 20px;
-  border-width-left: 4px;
-  border-width-right: 4px;
-  border: none #000000;
-  border-right-style: solid;
-  border-left-style: solid;
 }
 
 .left, .right {
-  background-color: #444444;
   height: 100vh;
   min-width: 100%;
 }
@@ -23,10 +17,12 @@
   margin: 0;
 }
 
-.event {
+.rounded {
+  border-radius: 10px;
+  /*background: #000; /!* without a background or border applied you won't be able to see if its rounded *!/*/
   border-style: solid;
   border-width: 1px;
-  border-color: #2E2F30;
-  margin-top: 4px;
-  padding: 4px;
+  border-color: #88AA55;
+  padding: 10px;
+  margin: 10px;
 }

@@ -1,19 +1,20 @@
-.col-md-3
-  .left left side
-.col-md-6
-  .center.center_scroll
-    .center_contents
-      %h1 All Events
+.container
+  .col-md-3
+    .left left side
+  .col-md-6
+    .center.center_scroll
+      .center_contents
+        %h1 All Events
 
-      %a{ href: new_event_url } Create a New Event
+        %a{ href: new_event_url } Create a New Event
 
-      .events_scroll
-        - @events.each do |event|
-          .event
-            %label{ for: :name } Name
-            .value#name= event.name
-            %label{ for: :description } Description
-            .value= event.description
+        .events_scroll
+          - @events.each do |event|
+            .rounded.event
+              %label{ for: :name } Name
+              .value#name= event.name
+              %label{ for: :description } Description
+              .value= event.description
 
-.col-md-3
-  .right right side
+  .col-md-3
+    .right right side
