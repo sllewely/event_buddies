@@ -10,11 +10,16 @@
 
         .events_scroll
           - @events.each do |event|
-            .rounded.event
-              %label{ for: :name } Name
-              .value#name= event.name
-              %label{ for: :description } Description
-              .value= event.description
+            = form_for(event, url: edit_event_url(event.id), method: :get) do
+              .rounded.event
+                %label{ for: :name } Name
+                .value#name= event.name
+                %label{ for: :description } Description
+                .value= event.description
 
   .col-md-3
     .right right side
+
+:javascript
+  initEventHover();
+  initSubmitEvent();

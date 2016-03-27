@@ -22,7 +22,12 @@
   /*background: #000; /!* without a background or border applied you won't be able to see if its rounded *!/*/
   border-style: solid;
   border-width: 1px;
-  border-color: #88AA55;
+  border-color: #40BADB;
+  background-color: #FFFEBF;
   padding: 10px;
   margin: 10px;
+}
+
+.hover_color {
+  background-color: #FFEE80;
 }
