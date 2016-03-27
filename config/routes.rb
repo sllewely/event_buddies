@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "static_pages#home"
+  
   resources :users
   resources :events
   resources :venues
@@ -8,5 +10,4 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
   end
 
-  root to: "static_pages#home"
 end
