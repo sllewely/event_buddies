@@ -13,10 +13,12 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-!/log/.keep
 /tmp
 
 .idea
 .byebug_history
 *.keep
 *.DS_Store
+
+/config/application.yml
+/config/secrets.rb
