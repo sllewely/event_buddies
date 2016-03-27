@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   has_many :events_artists
   has_many :artists, through: :events_artists
 
+  accepts_nested_attributes_for :artists
+
 end
 
 # == Schema Information

@@ -1,6 +1,7 @@
 class EventsArtist < ActiveRecord::Base
   belongs_to :events
-  belongs_to :artists
+  belongs_to :artist
+
 end
 
 # == Schema Information
