@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :venues
 
-  namespace 'api', defaults: { format: json } do
+  namespace 'api', defaults: { format: :json } do
     resources :users
     resource :session, only: [:show, :create, :destroy]
   end
