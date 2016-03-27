@@ -1,4 +1,6 @@
 class Artist < ActiveRecord::Base
+  has_many :events_artists
+  has_many :events, through: :events_artists
 
 end
 

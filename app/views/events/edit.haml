@@ -1,7 +1,9 @@
-.content
-  %h1 Edit Event Page
-  = form_for(@event) do |e|
-    = e.label(:name)
-    = e.text_field(:name, value: @event.name)
-    = e.label(:headlining_artist)
-    = e.label(:opening_artists)
+.container-fluid
+  .content
+    %h1 Edit Event Page
+    = form_for(@event) do |e|
+      = e.label(:name)
+      = e.text_field(:name, value: @event.name)
+      %br
+      = e.label(:headlining_artist)
+      = e.label(:opening_artists)
