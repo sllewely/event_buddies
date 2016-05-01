@@ -11,11 +11,12 @@
         .events_scroll
           - @events.each do |event|
             = form_for(event, url: edit_event_url(event.id), method: :get) do
-              .rounded.event
-                %label{ for: :name } Name
+              - color = cycle('even', 'odd')
+              .event{ class: color }
+                -#%label{ for: :name }
                 .value#name= event.name
-                %label{ for: :description } Description
-                .value= event.description
+                -#%label{ for: :description }
+                -#.value= event.description
 
   .col-md-3
     .right right side

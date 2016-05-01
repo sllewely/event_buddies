@@ -1,6 +1,6 @@
 // Effects for the events on the event list page
 function initEventHover() {
-  jQuery('.rounded.event').hover(
+  jQuery('.event').hover(
     function() {
       jQuery(this).addClass('hover_color');
     },

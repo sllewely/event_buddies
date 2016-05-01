@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+
+.even {
+  background-color: #AAAAAA;
+}
+
+.odd {
+  background-color: #CCCCCC;
+}
+
+body {
+  font-family: Impact, Charcoal, sans-serif;
+  /*font-variant: small-caps;*/
+  font-size: 2em;
+}

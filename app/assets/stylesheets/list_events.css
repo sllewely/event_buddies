@@ -28,6 +28,15 @@
   margin: 10px;
 }
 
+.event {
+  border-style: solid;
+  border-width: 1px;
+  color: #000000;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .hover_color {
   background-color: #FFEE80;
 }
