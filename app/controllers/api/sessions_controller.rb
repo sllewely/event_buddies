@@ -1,2 +1,2 @@
-class SessionsController < ApiController
-end
+# class SessionsController < ApiController
+# end
