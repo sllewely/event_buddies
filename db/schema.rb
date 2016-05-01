@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160327205002) do
     t.text     "description"
   end
 
+  create_table "events_artists", force: :cascade do |t|
+    t.integer "event_id",                  null: false
+    t.integer "artist_id",                 null: false
+    t.boolean "headliner", default: false
+  end
+
+  add_index "events_artists", ["artist_id"], name: "index_events_artists_on_artist_id", using: :btree
+  add_index "events_artists", ["event_id"], name: "index_events_artists_on_event_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "access_token"
     t.string   "temp_token",   null: false
@@ -46,15 +55,6 @@ ActiveRecord::Schema.define(version: 20160327205002) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
-
-  create_table "events_artists", force: :cascade do |t|
-    t.integer "event_id",                  null: false
-    t.integer "artist_id",                 null: false
-    t.boolean "headliner", default: false
-  end
-
-  add_index "events_artists", ["artist_id"], name: "index_events_artists_on_artist_id", using: :btree
-  add_index "events_artists", ["event_id"], name: "index_events_artists_on_event_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string "name"
