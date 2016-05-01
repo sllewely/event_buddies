@@ -9,7 +9,12 @@
         %a{ href: new_event_url } Create a New Event
 
         .events_scroll
+          - last_date = @events.first.date
+          .date= last_date
           - @events.each do |event|
+            - if event.date != last_date
+              - last_date = event.date
+              .date= last_date
             = form_for(event, url: edit_event_url(event.id), method: :get) do
               - color = cycle('even', 'odd')
               .event{ class: color }
