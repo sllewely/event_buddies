@@ -1,7 +1,7 @@
 .container-fluid
-  .col-md-3
+  .col-md-1
     .left left side
-  .col-md-6
+  .col-md-9
     .center.center_scroll
       .center_contents
         %h1 All Events
@@ -13,12 +13,14 @@
             = form_for(event, url: edit_event_url(event.id), method: :get) do
               - color = cycle('even', 'odd')
               .event{ class: color }
-                -#%label{ for: :name }
-                .value#name= event.name
-                -#%label{ for: :description }
-                -#.value= event.description
+                %table.events_display
+                  %tr
+                    %td
+                      .value#name= event.name
+                    %td
+                      .value#venue= 'Bowery Ballroom'
 
-  .col-md-3
+  .col-md-1
     .right right side
 
 :javascript
