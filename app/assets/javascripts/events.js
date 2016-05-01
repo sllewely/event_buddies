@@ -1,11 +1,25 @@
 // Effects for the events on the event list page
 function initEventHover() {
   jQuery('.event').hover(
-    function() {
-      jQuery(this).addClass('hover_color');
+  function() {
+    var targetBox = jQuery(this);
+    if(targetBox.hasClass('even')) {
+        targetBox.removeClass('even');
+        targetBox.addClass('even_hover');
+      } else {
+        targetBox.removeClass('odd');
+        targetBox.addClass('odd_hover');
+      }
     },
     function() {
-      jQuery(this).removeClass('hover_color');
+      var targetBox = jQuery(this);
+      if(targetBox.hasClass('even_hover')) {
+        targetBox.removeClass('even_hover');
+        targetBox.addClass('even');
+      } else {
+        targetBox.removeClass('odd_hover');
+        targetBox.addClass('odd');
+      }
     }
   )
 }

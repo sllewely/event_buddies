@@ -16,11 +16,19 @@
 
 
 .even {
-  background-color: #E0E0E0;
+  background-color: #D0D0D0;
 }
 
 .odd {
   background-color: #F0F0F0;
+}
+
+.even_hover {
+  background-color: #88AAAA;
+}
+
+.odd_hover {
+  background-color: #A8CACA;
 }
 
 body {
