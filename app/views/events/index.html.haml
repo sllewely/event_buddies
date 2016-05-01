@@ -1,20 +1,37 @@
 .container-fluid
-  .col-md-3
-    .left left side
-  .col-md-6
+  .col-md-1
+    .left
+      left side
+      %a{ href: new_event_url } Create a New Event
+
+  .col-md-9
     .center.center_scroll
       .center_contents
         %h1 All Events
 
-        %a{ href: new_event_url } Create a New Event
+
+        %br
 
         .events_scroll
+          - last_date = @events.first.date
+          .date= last_date
           - @events.each do |event|
-            .rounded.event
-              %label{ for: :name } Name
-              .value#name= event.name
-              %label{ for: :description } Description
-              .value= event.description
+            - if event.date != last_date
+              - last_date = event.date
+              .date= last_date
+            = form_for(event, url: edit_event_url(event.id), method: :get) do
+              - color = cycle('even', 'odd')
+              .event{ class: color }
+                %table.events_display
+                  %tr
+                    %td
+                      .value#name= event.name
+                    %td
+                      .value#venue= 'Bowery Ballroom'
 
-  .col-md-3
+  .col-md-1
     .right right side
+
+:javascript
+  initEventHover();
+  initSubmitEvent();

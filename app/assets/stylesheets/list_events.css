@@ -9,7 +9,7 @@
 
 .left, .right {
   height: 100vh;
-  min-width: 100%;
+  min-width: 40%;
 }
 
 .col-md-3, .col-md-6 {
@@ -17,12 +17,41 @@
   margin: 0;
 }
 
-.rounded {
-  border-radius: 10px;
-  /*background: #000; /!* without a background or border applied you won't be able to see if its rounded *!/*/
+.event {
   border-style: solid;
   border-width: 1px;
-  border-color: #88AA55;
-  padding: 10px;
-  margin: 10px;
+  border-color: #CCCCCC;
+  color: #000000;
+  margin: 2px;
+  padding: 8px;
+  border-radius: 5px;
+  letter-spacing: 2px;
+}
+
+
+#name {
+  text-align: left;
+  /*position: absolute;*/
+  color: #404040;
+  /*color: #707070;*/
+  font-size: 1.5em;
+  float: left;
+}
+
+
+#venue {
+  font-family: Century Gothic, sans-serif;
+  text-align: right;
+  /*position: relative;*/
+  /*position: absolute;*/
+  color: #808080
+  float: right;
+}
+
+.hover_color {
+  background-color: #FFEE80;
+}
+
+.events_display {
+  width: 100%;
 }
