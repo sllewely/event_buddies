@@ -32,6 +32,28 @@
 }
 
 body {
-  font-family: Impact, Charcoal, sans-serif;
+  font-family: Century Gothic, sans-serif;
   font-size: 2em;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 2.4em;
+}
+
+.impact {
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+.field {
+  font-size: .8em;
+}
+
+input[type="text"] {
+  width: 400px;
+}
+
+textarea {
+  width: 400px;
+  height: 100px;
 }

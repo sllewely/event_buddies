@@ -3,16 +3,23 @@
 
   .form#new_event
     = form_for @event do |f|
+      %label Name
       .field
-        %label Name
-        %br
         = f.text_field :name
+      %label Artist Name
       .field
-        %label Description
-        %br
-        = f.text_area :description
+        = text_field :artist, :name
+      %label Venue
+      .field
+        = text_field :venue, :name
+      %label Date/Time
       .field
         = f.date_field :date
       .field
         = f.time_field :start_time
+      %label Description
+      .field
+        = f.text_area :description
+
+      %hr
       %button Submit Form
