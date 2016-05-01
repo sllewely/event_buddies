@@ -25,7 +25,7 @@
                 %table.events_display
                   %tr
                     %td
-                      .value#name= event.name
+                      .value#name= event.name || event.artists.where(headliner: true).first.name
                     %td
                       .value#venue= 'Bowery Ballroom'
 
