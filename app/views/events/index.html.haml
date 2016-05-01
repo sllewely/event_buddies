@@ -1,12 +1,16 @@
 .container-fluid
   .col-md-1
-    .left left side
+    .left
+      left side
+      %a{ href: new_event_url } Create a New Event
+
   .col-md-9
     .center.center_scroll
       .center_contents
         %h1 All Events
 
-        %a{ href: new_event_url } Create a New Event
+
+        %br
 
         .events_scroll
           - last_date = @events.first.date
