@@ -25,9 +25,9 @@
                 %table.events_display
                   %tr
                     %td
-                      .value#name= event.name
+                      .value#name= event.display_name
                     %td
-                      .value#venue= 'Bowery Ballroom'
+                      .value#venue= event.venue.try(:name) || 'N/A'
 
   .col-md-1
     .right right side
