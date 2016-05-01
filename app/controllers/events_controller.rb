@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     venue = Venue.find_or_create_by(name: params[:venue][:name])
     event = Event.create(event_params.merge!(venue: venue))
     artist = Artist.find_or_create_by(name: params[:artist][:name])
-    EventsArtist.create(event: event, artist: artist, headliner: true)
+    EventsArtist.create(event_id: event.id, artist_id: artist.id, headliner: true)
     redirect_to events_path
   end
 

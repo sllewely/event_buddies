@@ -1,8 +1,17 @@
 class Event < ActiveRecord::Base
   has_many :events_artists, dependent: :destroy
   has_many :artists, through: :events_artists
+  belongs_to :venue
 
   accepts_nested_attributes_for :artists
+
+  def display_name
+    name.empty? ? headlining_artist.name : name
+  end
+
+  def headlining_artist
+    artists.where(events_artists: { headliner: true } ).first
+  end
 
 end
 
