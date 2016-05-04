@@ -19,15 +19,22 @@
             - if event.date != last_date
               - last_date = event.date
               .date= last_date
-            = form_for(event, url: edit_event_url(event.id), method: :get) do
-              - color = cycle('even', 'odd')
-              .event{ class: color }
-                %table.events_display
-                  %tr
-                    %td
-                      .value#name= event.display_name
-                    %td
-                      .value#venue= event.venue.try(:name) || 'N/A'
+              %table.event_row
+                %tr
+                  %td.event_column
+                    = form_for(event, url: edit_event_url(event.id), method: :get) do
+                      - color = cycle('even', 'odd')
+                      .event{ class: color }
+                        %table.events_display
+                          %tr
+                            %td
+                              .value#name= event.display_name
+                            %td
+                              .value#venue= event.venue.try(:name) || 'N/A'
+                  %td.select_column
+                    .status_select v
+
+
 
   .col-md-1
     .right right side
