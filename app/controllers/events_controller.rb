@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.includes(:venue).order(:date)
+    @events = Event.all.includes(:venue, :user_statuses_for_events).order(:date)
   end
 
   def create
