@@ -36,8 +36,8 @@
                     .select_buffer
                       = hidden_field :user_statuses_for_events, :event_id, value: event.id
                       .styled_select
-                        %select{ name: 'user_statuses_for_events[status]', id: event.id }
-                          - selected = event.user_statuses_for_events.find_by(user_id: @current_user.id) || 2
+                        %select.user_statuses_for_events_status{ name: 'user_statuses_for_events[status]', id: event.id }
+                          - selected = event.user_statuses_for_events.find_by(user_id: @current_user.id).try(:status) || 2
                           = options_for_select(UserStatusesForEvent::STATUSES.to_a, selected)
 
 

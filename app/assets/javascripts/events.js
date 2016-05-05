@@ -41,8 +41,11 @@ function initSubmitEvent() {
 
 // Update user status when user status selected for event
 function initStatusWatcher() {
-  jQuery('select#user_statuses_for_events_status').change(function(){
-    //alert('beep boop');
-    jQuery('#edit_event_' + '1').submit();
+  jQuery('select.user_statuses_for_events_status').change(function(){
+    //alert('beep');
+    var eventID = jQuery(this).attr('id');
+    var formString = 'form.update_status_form#edit_event_' + eventID;
+    //alert(formString);
+    jQuery(formString).submit();
   });
 }
