@@ -45,7 +45,6 @@ function initStatusWatcher() {
     //alert('beep');
     var eventID = jQuery(this).attr('id');
     var formString = 'form.update_status_form#edit_event_' + eventID;
-    //alert(formString);
     jQuery(formString).submit();
   });
 }
