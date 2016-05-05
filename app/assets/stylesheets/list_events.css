@@ -67,10 +67,14 @@
 }
 
 .select_column {
-  max-width: 40px;
-  width: 40px;
+  max-width: 100px;
+  width: 100px;
 }
 
 .event_row {
   width: 100%;
+}
+
+.select_buffer {
+  margin: 4px;
 }
