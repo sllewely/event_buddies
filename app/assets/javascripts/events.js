@@ -41,6 +41,6 @@ function initSubmitEvent() {
 function initStatusWatcher() {
   jQuery('select#user_statuses_for_events_status').change(function(){
     //alert('beep boop');
-    jQuery('.update_status_form').submit();
+    jQuery('#edit_event_' + '1').submit();
   });
 }
