@@ -13,21 +13,34 @@
         %br
 
         .events_scroll
-          - last_date = @events.first.date
-          .date= last_date
+          - last_date = nil
           - @events.each do |event|
             - if event.date != last_date
               - last_date = event.date
               .date= last_date
-            = form_for(event, url: edit_event_url(event.id), method: :get) do
-              - color = cycle('even', 'odd')
-              .event{ class: color }
-                %table.events_display
-                  %tr
-                    %td
-                      .value#name= event.display_name
-                    %td
-                      .value#venue= event.venue.try(:name) || 'N/A'
+            %table.event_row
+              %tr
+                %td.event_column
+                  = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
+                    - color = cycle('even', 'odd')
+                    .event{ class: color }
+                      %table.events_display
+                        %tr
+                          %td
+                            .value#name= event.display_name
+                          %td
+                            .value#venue= event.venue.try(:name) || 'N/A'
+                %td.select_column
+                  = form_for(event, url: event_url(event.id), method: :put, html: { class: :update_status_form }) do
+                    = event.id
+                    .select_buffer
+                      -#- debugger
+                      = hidden_field :user_statuses_for_events, :event_id, value: event.id
+                      .styled_select= select(:user_statuses_for_events, :status,
+                        UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
+                        selected: event.user_statuses_for_events.find_by(user_id: @current_user.id) || 2)
+
+
 
   .col-md-1
     .right right side
@@ -35,3 +48,4 @@
 :javascript
   initEventHover();
   initSubmitEvent();
+  initStatusWatcher();

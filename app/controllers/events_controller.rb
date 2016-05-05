@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.order(:date)
+    @events = Event.all.includes(:venue, :user_statuses_for_events).order(:date)
   end
 
   def create
@@ -24,7 +24,10 @@ class EventsController < ApplicationController
   end
 
   def update
-
+    if params.key?(:user_statuses_for_events)
+      UserStatusesForEvent.update_or_create(*[current_user.id, user_status_params[:event_id], user_status_params[:status]])
+    end
+    redirect_to events_path
   end
 
   private
@@ -33,4 +36,9 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :description, :date, :start_time)
   end
+
+  def user_status_params
+    params.require(:user_statuses_for_events).permit(:event_id, :status)
+  end
+
 end

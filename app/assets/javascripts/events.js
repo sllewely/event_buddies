@@ -26,13 +26,21 @@ function initEventHover() {
 
 // Go to Edit Event Page when you click on an event bubble
 function initSubmitEvent() {
-  jQuery('.edit_event').each(
+  jQuery('.event').each(
     function() {
       jQuery(this).click(
         function() {
-          jQuery(this).submit();
+          jQuery('.edit_event_form').submit();
         }
       )
     }
   )
+}
+
+// Update user status when user status selected for event
+function initStatusWatcher() {
+  jQuery('select#user_statuses_for_events_status').change(function(){
+    //alert('beep boop');
+    jQuery('.update_status_form').submit();
+  });
 }

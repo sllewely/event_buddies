@@ -26,6 +26,8 @@
   padding: 8px;
   border-radius: 5px;
   letter-spacing: 2px;
+  width: 100%;
+  overflow: auto;
 }
 
 
@@ -54,4 +56,25 @@
 
 .events_display {
   width: 100%;
+}
+
+.status_select {
+  text-align: right;
+}
+
+.event_column {
+  min-width: 90%;
+}
+
+.select_column {
+  max-width: 100px;
+  width: 100px;
+}
+
+.event_row {
+  width: 100%;
+}
+
+.select_buffer {
+  margin: 4px;
 }

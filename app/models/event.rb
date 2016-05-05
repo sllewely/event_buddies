@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   has_many :events_artists, dependent: :destroy
   has_many :artists, through: :events_artists
   belongs_to :venue
+  has_many :user_statuses_for_events
 
   accepts_nested_attributes_for :artists
 
@@ -15,6 +16,7 @@ class Event < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: events
@@ -26,5 +28,6 @@ end
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  description :text
+#  venue_id    :integer
 #
 
