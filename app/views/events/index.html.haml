@@ -31,8 +31,9 @@
                           %td
                             .value#venue= event.venue.try(:name) || 'N/A'
                 %td.select_column
-                  = form_for(event, url: event_url(event.id), method: :put) do
+                  = form_for(event, url: event_url(event.id), method: :put, html: { class: :update_status_form }) do
                     .select_buffer
+                      = hidden_field :user_statuses_for_events, :event_id, value: event.id
                       .styled_select= select(:user_statuses_for_events, :status,
                         UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
                         selected: 2)
@@ -45,3 +46,4 @@
 :javascript
   initEventHover();
   initSubmitEvent();
+  initStatusWatcher();
