@@ -21,7 +21,7 @@
             %table.event_row
               %tr
                 %td.event_column
-                  = form_for(event, url: edit_event_url(event.id), method: :get) do
+                  = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
                     - color = cycle('even', 'odd')
                     .event{ class: color }
                       %table.events_display
@@ -31,12 +31,11 @@
                           %td
                             .value#venue= event.venue.try(:name) || 'N/A'
                 %td.select_column
-                  -#= form_for(event, url: event_url(event.id), method: :put) do
-                  -#.status_select v
-                  .select_buffer
-                    .styled_select= select(:user_statuse_for_events, :status,
-                      UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
-                      selected: 2)
+                  = form_for(event, url: event_url(event.id), method: :put) do
+                    .select_buffer
+                      .styled_select= select(:user_statuses_for_events, :status,
+                        UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
+                        selected: 2)
 
 
 
