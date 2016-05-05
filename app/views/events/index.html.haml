@@ -35,7 +35,8 @@
                   -#.status_select v
                   .select_buffer
                     .styled_select= select(:user_statuse_for_events, :status,
-                      UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] })
+                      UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
+                      selected: 2)
 
 
 
