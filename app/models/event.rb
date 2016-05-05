@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: events
@@ -26,5 +27,6 @@ end
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  description :text
+#  venue_id    :integer
 #
 
