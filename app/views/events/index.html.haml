@@ -23,7 +23,7 @@
                 %td.event_column
                   = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
                     - color = cycle('even', 'odd')
-                    .event{ class: color }
+                    .event{ class: color, id: event.id }
                       %table.events_display
                         %tr
                           %td
@@ -34,11 +34,11 @@
                   = form_for(event, url: event_url(event.id), method: :put, html: { class: :update_status_form }) do
                     = event.id
                     .select_buffer
-                      -#- debugger
                       = hidden_field :user_statuses_for_events, :event_id, value: event.id
-                      .styled_select= select(:user_statuses_for_events, :status,
-                        UserStatusesForEvent::STATUSES.each_pair { |status_name, status_int| [status_int, status_name] },
-                        selected: event.user_statuses_for_events.find_by(user_id: @current_user.id) || 2)
+                      .styled_select
+                        %select.user_statuses_for_events_status{ name: 'user_statuses_for_events[status]', id: event.id }
+                          - selected = event.user_statuses_for_events.find_by(user_id: @current_user.id).try(:status) || 2
+                          = options_for_select(UserStatusesForEvent::STATUSES.to_a, selected)
 
 
 
