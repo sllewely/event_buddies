@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   has_many :events_artists, dependent: :destroy
   has_many :artists, through: :events_artists
   belongs_to :venue
+  has_many :user_statuses_for_events
 
   accepts_nested_attributes_for :artists
 

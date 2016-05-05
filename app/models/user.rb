@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :user_statuses_for_events
 end
 
 # == Schema Information
