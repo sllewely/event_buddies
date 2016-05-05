@@ -30,7 +30,9 @@ function initSubmitEvent() {
     function() {
       jQuery(this).click(
         function() {
-          jQuery('.edit_event_form').submit();
+          var eventID = jQuery(this).attr('id');
+          var formString = 'form.edit_event_form#edit_event_' + eventID;
+          jQuery(formString).submit();
         }
       )
     }

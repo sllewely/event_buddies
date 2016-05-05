@@ -23,7 +23,7 @@
                 %td.event_column
                   = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
                     - color = cycle('even', 'odd')
-                    .event{ class: color }
+                    .event{ class: color, id: event.id }
                       %table.events_display
                         %tr
                           %td
