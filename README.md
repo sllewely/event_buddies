@@ -11,3 +11,6 @@ rails server -p 3000
 ### Project management
 
 *slack channel* : https://concertbuddies.slack.com
+
+*trello* : https://trello.com/concertbuddiesteam/members
+
