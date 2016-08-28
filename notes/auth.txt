@@ -3,7 +3,8 @@
 %%% With omniauth and facebook
 
 Omniauth-facebook
- * https://mkdynamic.github.io/omniauth-facebook/
+ * [github page](https://mkdynamic.github.io/omniauth-facebook/)
+ * [Wiki](https://github.com/omniauth/omniauth/wiki)
 Facebook login for the web with js sdk
 * https://developers.facebook.com/docs/facebook-login/web
 
