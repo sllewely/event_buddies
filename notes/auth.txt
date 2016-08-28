@@ -1,0 +1,6 @@
+%% Authentication
+
+%%% With omniauth and facebook
+
+Omniauth-facebook
+ * https://mkdynamic.github.io/omniauth-facebook/
