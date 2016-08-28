@@ -4,3 +4,6 @@
 
 Omniauth-facebook
  * https://mkdynamic.github.io/omniauth-facebook/
+Facebook login for the web with js sdk
+* https://developers.facebook.com/docs/facebook-login/web
+
