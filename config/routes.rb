@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root to: "static_pages#home"
   
   resources :users
   resources :events
@@ -9,5 +8,9 @@ Rails.application.routes.draw do
     resources :users
     resource :session, only: [:show, :create, :destroy]
   end
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
+  root to: 'static_pages#home'
 
 end
