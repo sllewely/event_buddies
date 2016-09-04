@@ -1,13 +1,19 @@
 class SessionsController < ApiController
+  def new
+    redirect_to '/auth/facebook'
+  end
+
   def create
     debugger
-    user = User.from_omniauth(env["omniauth.auth"])
+    auth = request.env["omniauth.auth"]
+    user = User.where(:provider => auth['provider'],
+      :uid => auth['uid']).first || User.create_with_omniauth(auth)
     session[:user_id] = user.id
-    redirect_to root_path
+    redirect_to root_url, :notice => "Signed in!"
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_path
+    reset_session
+    redirect_to root_url, notice: 'Signed out!'
   end
 end
