@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
+    # debugger
+    # env["omniauth.auth"]
+    # @current_user ||= session[:user_id]
     @current_user ||= User.find_by(first_name: 'Sarah')
   end
 end
