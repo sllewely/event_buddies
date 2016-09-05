@@ -42,7 +42,7 @@ gem 'omniauth-facebook', '~> 3.0'
 # gem 'aws-sdk', '~> 2'
 
 # Use this for secret keys if we plan to deploy on Heroku
-# gem 'figaro'
+gem 'figaro', '~> 1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
