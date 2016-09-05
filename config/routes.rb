@@ -13,8 +13,5 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy'
   get '/signin' => 'sessions#new'
 
-  get 'home' => 'home#home'
-
-  root to: 'static_pages#home'
-
+  root to: 'home#home'
 end

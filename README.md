@@ -7,7 +7,7 @@ An app for coordinating concerts and events with friends
 ##### Register with Facebook
 
 Site URL field must be filled with the URL that FB is called from.  Currently,
-```http://localhost:3000/home```
+```http://localhost:3000/```
 
 Valid OAuth redirect URIs must be filled with the call where we receive the response
 ```http://localhost:3000/auth/facebook/callback````
