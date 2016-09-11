@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :birthday
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.string :facebook_uid, null: false
       t.string :location
       t.string :uuid, null: false
 
