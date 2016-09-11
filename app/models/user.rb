@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     create!(attrs_from_params(params))
   end
 
+  # User attributes required for creating a new user
   def self.attrs_from_params(params)
     first_name, last_name = name_from_params(params[:info].name)
     {
@@ -20,7 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def self.name_from_params(name)
-    name.split
+    whole_name = name.split
+    [whole_name.first, whole_name.last]
   end
 
   def self.generate_uuid
