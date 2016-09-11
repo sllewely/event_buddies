@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :current_user, only: [:new, :create]
+
   def new
     redirect_to '/auth/facebook'
   end
