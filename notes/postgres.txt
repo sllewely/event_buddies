@@ -1,0 +1,21 @@
+
+## Postgres
+
+load into a database
+```psql <my db name>```
+
+```\c <my db name>```
+
+list databases
+```\l```
+
+list tables
+```\dt```
+
+view specific table
+```\d+ <my table name>```
+
+quit
+```\q```
+
+
