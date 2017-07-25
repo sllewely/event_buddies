@@ -1,26 +1,26 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '5.1.2'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-# Instead use postgres
-gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# # Instead use postgres
+# gem 'pg'
+# # Use SCSS for stylesheets
+# gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# gem 'coffee-rails'
+# # See https://github.com/rails/execjs#readme for more supported runtimes
+# # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+# # Use jquery as the JavaScript library
+# gem 'jquery-rails'
 
-gem 'turbolinks'
+# gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+# # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# gem 'jbuilder'
 gem 'react-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -31,9 +31,9 @@ gem 'haml'
 gem 'annotate'
 gem 'twitter-bootstrap-rails'
 
-gem 'rake', '~> 10.5'
+gem 'rake'
 
-gem 'omniauth-facebook', '~> 3.0'
+# gem 'omniauth-facebook'
 # Paperclip allows for user picture uploads and dynamic stuff. Uncomment if we want to use.
 # gem 'paperclip'
 # gem 'paperclip-meta'
@@ -42,7 +42,7 @@ gem 'omniauth-facebook', '~> 3.0'
 # gem 'aws-sdk', '~> 2'
 
 # Use this for secret keys if we plan to deploy on Heroku
-gem 'figaro', '~> 1.0'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -56,7 +56,7 @@ gem 'figaro', '~> 1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem "rspec", "~> 3.1.0"
+  gem "rspec"
   gem "rspec-rails"
 end
 
@@ -66,12 +66,12 @@ group :test do
 end
 
 group :development do
-  gem 'quiet_assets'
+  # gem 'quiet_assets'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
