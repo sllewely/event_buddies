@@ -1,4 +1,4 @@
-class CreateJoinTableArtistsEvents < ActiveRecord::Migration
+class CreateJoinTableArtistsEvents < ActiveRecord::Migration[5.1]
   def change
     create_table :events_artists do |ea|
       ea.integer :event_id, null: false, index: true

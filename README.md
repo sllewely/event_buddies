@@ -15,6 +15,28 @@ brew install postgresql
 bundle install
 ```
 
+??? bundle update ???
+
+Setup the database
+```
+brew install postgresql
+```
+Start the db server running
+```
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```
+(Stop manually with:)
+```
+pg_ctl -D /usr/local/var/postgres stop -s -m fast
+```
+Continue db setup
+```
+createdb concert_development
+createdb concert_test
+createdb concert_production
+bundle exec rake db:migrate
+```
+
 ##### Register with Facebook
 
 Site URL field must be filled with the URL that FB is called from.  Currently,
