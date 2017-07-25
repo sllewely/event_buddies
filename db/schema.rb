@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911215522) do
+ActiveRecord::Schema.define(version: 20160505000633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,56 +22,47 @@ ActiveRecord::Schema.define(version: 20160911215522) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.date     "date",        null: false
-    t.time     "start_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "description"
-    t.integer  "venue_id"
+    t.string "name", null: false
+    t.date "date", null: false
+    t.time "start_time"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "venue_id"
+    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
-
-  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "events_artists", force: :cascade do |t|
-    t.integer "event_id",                  null: false
-    t.integer "artist_id",                 null: false
+    t.integer "event_id", null: false
+    t.integer "artist_id", null: false
     t.boolean "headliner", default: false
+    t.index ["artist_id"], name: "index_events_artists_on_artist_id"
+    t.index ["event_id"], name: "index_events_artists_on_event_id"
   end
-
-  add_index "events_artists", ["artist_id"], name: "index_events_artists_on_artist_id", using: :btree
-  add_index "events_artists", ["event_id"], name: "index_events_artists_on_event_id", using: :btree
 
   create_table "user_statuses_for_events", force: :cascade do |t|
-    t.integer "user_id",                     null: false
-    t.integer "event_id",                    null: false
-    t.integer "status",                      null: false
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.integer "status", null: false
     t.boolean "has_tickets", default: false
+    t.index ["user_id", "event_id"], name: "index_user_statuses_for_events_on_user_id_and_event_id", unique: true
   end
-
-  add_index "user_statuses_for_events", ["user_id", "event_id"], name: "index_user_statuses_for_events_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "access_token"
-    t.string   "temp_token",     null: false
-    t.string   "email",          null: false
+    t.string "email", null: false
     t.datetime "birthday"
-    t.string   "first_name",     null: false
-    t.string   "last_name",      null: false
-    t.string   "location"
-    t.string   "uuid",           null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "facebook_image"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "location"
+    t.string "uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string "name"
-    t.text   "description"
+    t.text "description"
     t.string "address"
   end
 

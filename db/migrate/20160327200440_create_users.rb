@@ -1,8 +1,6 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
-      t.string :access_token
-      t.string :temp_token, null: false
       t.string :email, null: false, index: true
       t.datetime :birthday
       t.string :first_name, null: false

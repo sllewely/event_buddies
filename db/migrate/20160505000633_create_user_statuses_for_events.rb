@@ -1,4 +1,4 @@
-class CreateUserStatusesForEvents < ActiveRecord::Migration
+class CreateUserStatusesForEvents < ActiveRecord::Migration[5.1]
   def change
     create_table :user_statuses_for_events do |t|
       t.integer :user_id, null: false
