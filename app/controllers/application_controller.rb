@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     # @current_user ||= User.find(session[:user_id])
-    @current_user ||= User.find_by(name: 'Sarah')
+    @current_user ||= User.find_by(first_name: 'Sarah')
   end
 end
