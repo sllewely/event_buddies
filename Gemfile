@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '5.1.2'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-# # Instead use postgres
-# gem 'pg'
+# Instead use postgres
+gem 'pg'
 # # Use SCSS for stylesheets
 # gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets

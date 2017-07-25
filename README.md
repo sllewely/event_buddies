@@ -4,6 +4,17 @@ An app for coordinating concerts and events with friends
 
 ### Setup
 
+##### From Scratch
+
+```
+git clone git@github.com:sllewely/concert_buddies.git
+cd concert_buddies
+rbenv install 2.4.1
+gem install bundler
+brew install postgresql
+bundle install
+```
+
 ##### Register with Facebook
 
 Site URL field must be filled with the URL that FB is called from.  Currently,
