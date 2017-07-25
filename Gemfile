@@ -6,18 +6,18 @@ gem 'rails', '5.1.2'
 # Instead use postgres
 gem 'pg'
 # # Use SCSS for stylesheets
-# gem 'sass-rails'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails'
+gem 'coffee-rails'
 # # See https://github.com/rails/execjs#readme for more supported runtimes
 # # gem 'therubyracer', platforms: :ruby
 
 # # Use jquery as the JavaScript library
-# gem 'jquery-rails'
+gem 'jquery-rails'
 
-# gem 'turbolinks'
+gem 'turbolinks'
 
 # # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder'

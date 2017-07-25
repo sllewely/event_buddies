@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
     [whole_name.first, whole_name.last]
   end
 
+  # TODO: before_create
   def self.generate_uuid
     SecureRandom.uuid
   end

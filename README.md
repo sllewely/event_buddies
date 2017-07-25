@@ -37,6 +37,13 @@ createdb concert_production
 bundle exec rake db:migrate
 ```
 
+
+##### For a demo
+
+```
+bundle exec rake db:seed
+```
+
 ##### Register with Facebook
 
 Site URL field must be filled with the URL that FB is called from.  Currently,
