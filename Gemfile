@@ -28,7 +28,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 # Annotate models with schema info
 gem 'annotate'
-gem 'twitter-bootstrap-rails'
 
 gem 'rake'
 
