@@ -44,10 +44,6 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (8.0.0)
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -74,7 +70,6 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
     crass (1.0.3)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
@@ -127,6 +122,8 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.1)
     rack (2.0.3)
+    rack-proxy (0.6.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.2)
@@ -162,12 +159,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
-    react-rails (2.4.3)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -233,6 +224,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (3.2.0)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -258,7 +253,6 @@ DEPENDENCIES
   rails (= 5.1.2)
   rails_12factor
   rake
-  react-rails
   rspec
   rspec-rails
   sass-rails
@@ -268,6 +262,7 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier
   web-console
+  webpacker
 
 BUNDLED WITH
    1.16.0.pre.3
