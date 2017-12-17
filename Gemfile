@@ -21,7 +21,6 @@ gem 'turbolinks'
 
 # # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder'
-gem 'react-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -32,6 +31,8 @@ gem 'annotate'
 gem 'twitter-bootstrap-rails'
 
 gem 'rake'
+
+gem 'webpacker'
 
 # gem 'omniauth-facebook'
 # Paperclip allows for user picture uploads and dynamic stuff. Uncomment if we want to use.
