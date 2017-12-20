@@ -8,13 +8,10 @@ const ButtonExampleButton = () => (
     <Button>Click Here</Button>
 )
 
-const HomepageLayoutThing = () => (
-    <HomepageLayout/>
-)
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
-        <HomepageLayout />,
+        <ButtonExampleButton />,
         document.body.appendChild(document.createElement('div')),
     )
 })
