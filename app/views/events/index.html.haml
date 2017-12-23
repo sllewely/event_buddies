@@ -1,49 +1,41 @@
-.container-fluid
-  .col-md-1
-    .left
-      left side
-      %a{ href: new_event_url } Create a New Event
+%a{ href: new_event_url } Create a New Event
 
-  .col-md-9
-    .center.center_scroll
-      .center_contents
-        %h1 All Events
+%h1 All Events
 
 
-        %br
+%br
 
-        .events_scroll
-          - last_date = nil
-          - @events.each do |event|
-            - if event.date != last_date
-              - last_date = event.date
-              .date= last_date
-            %table.event_row
-              %tr
-                %td.event_column
-                  = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
-                    - color = cycle('even', 'odd')
-                    .event{ class: color, id: event.id }
-                      %table.events_display
-                        %tr
-                          %td
-                            .value#name= event.display_name
-                          %td
-                            .value#venue= event.venue.try(:name) || 'N/A'
-                %td.select_column
-                  = form_for(event, url: event_url(event.id), method: :put, html: { class: :update_status_form }) do
-                    = event.id
-                    .select_buffer
-                      = hidden_field :user_statuses_for_events, :event_id, value: event.id
-                      .styled_select
-                        %select.user_statuses_for_events_status{ name: 'user_statuses_for_events[status]', id: event.id }
-                          - selected = event.user_statuses_for_events.find_by(user_id: @current_user.id).try(:status) || 2
-                          = options_for_select(UserStatusesForEvent::STATUSES.to_a, selected)
+.events_scroll
+  - last_date = nil
+  - @events.each do |event|
+    - if event.date != last_date
+      - last_date = event.date
+      .date= last_date
+    %table.event_row
+      %tr
+        %td.event_column
+          = form_for(event, url: edit_event_url(event.id), method: :get, html: { class: :edit_event_form }) do
+            - color = cycle('even', 'odd')
+            .event{ class: color, id: event.id }
+              %table.events_display
+                %tr
+                  %td
+                    .value#created_by= event.created_by.name
+                  %td
+                    .value#name= event.display_name
+                  %td
+                    .value#venue= event.venue.try(:name) || 'N/A'
+        %td.select_column
+          = form_for(event, url: event_url(event.id), method: :put, html: { class: :update_status_form }) do
+            = event.id
+            .select_buffer
+              = hidden_field :user_statuses_for_events, :event_id, value: event.id
+              .styled_select
+                %select.user_statuses_for_events_status{ name: 'user_statuses_for_events[status]', id: event.id }
+                  - selected = event.user_statuses_for_events.find_by(user_id: @current_user.id).try(:status) || 2
+                  = options_for_select(UserStatusesForEvent::STATUSES.to_a, selected)
 
 
-
-  .col-md-1
-    .right right side
 
 :javascript
   initEventHover();

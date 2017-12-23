@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :events_artists, dependent: :destroy
   has_many :artists, through: :events_artists
+  belongs_to :created_by, foreign_key: :created_by_id, class_name: 'User'
   belongs_to :venue
   has_many :user_statuses_for_events
 

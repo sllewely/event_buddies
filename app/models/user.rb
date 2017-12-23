@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
   has_many :user_statuses_for_events
+  has_many :events, foreign_key: :created_by_id
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def self.create_with_omniauth(params)
     create!(attrs_from_params(params))
