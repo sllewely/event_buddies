@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.includes(:venue, :user_statuses_for_events).where(['date >= ?', Date.today]).order(:date)
+    @events = Event.all_recent_events
   end
 
   def create

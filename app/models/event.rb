@@ -11,6 +11,10 @@ class Event < ActiveRecord::Base
     name.empty? ? headlining_artist.name : name
   end
 
+  def self.all_recent_events
+    self.all.includes(:venue, :user_statuses_for_events).where(['date >= ?', Date.today]).order(:date)
+  end
+
   def headlining_artist
     artists.where(events_artists: { headliner: true } ).first
   end
