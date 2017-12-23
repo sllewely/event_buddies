@@ -1,6 +1,7 @@
 class Api::EventsController < Api::ApiController
   def index
-    render json: { data: Event.all_recent_events }, status: :ok
+    events = Event.all_recent_events.map(&:to_hash)
+    render json: { data: events }, status: :ok
   end
 
 end

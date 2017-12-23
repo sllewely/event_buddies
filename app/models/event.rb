@@ -19,6 +19,10 @@ class Event < ActiveRecord::Base
     artists.where(events_artists: { headliner: true } ).first
   end
 
+  def to_hash
+    as_json.merge!(user_statuses_for_events: user_statuses_for_events, venue: venue)
+  end
+
 end
 
 
