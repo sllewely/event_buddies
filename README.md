@@ -13,6 +13,7 @@ rbenv install 2.4.1
 gem install bundler
 brew install postgresql
 bundle install
+yarn install
 ```
 
 ??? bundle update ???

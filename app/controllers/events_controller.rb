@@ -9,9 +9,13 @@ class EventsController < ApplicationController
 
   def create
     venue = Venue.find_or_create_by(name: params[:venue][:name])
-    event = Event.create(event_params.merge!(venue: venue))
+    # TODO: User sessions
+    user = User.first
+    event = Event.create(event_params.merge!(venue: venue, created_by: user))
     artist = Artist.find_or_create_by(name: params[:artist][:name])
+
     EventsArtist.create(event_id: event.id, artist_id: artist.id, headliner: true)
+
     redirect_to events_path
   end
 
