@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 2.5.1
+Rails version 5.2.0
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+Get Ruby version
+```
+brew update && brew upgrade ruby-build
+rbenv install 2.5.1
+rbenv local 2.5.1
+gem install bundle
+bundle install
+```
 
-* System dependencies
+```
+brew upgrade yarn
+yarn install
+```
 
-* Configuration
+## Run
 
-* Database creation
+```
+rails s
+```
 
-* Database initialization
+And visit
+[http://localhost:3000/](http://localhost:3000/)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
