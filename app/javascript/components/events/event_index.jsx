@@ -6,12 +6,12 @@ const EventsIndex = ({ events }) => {
   const allEvents = events.map(event => (
     <EventItem event={event} key={event.id} />
   ));
-  return { allEvents };
+  return allEvents;
 };
 
 const msp = state => {
   return {
-    events: Object.values(state.entities.events)
+    events: Object.values(state.entities.events).sort((a, b) => a.date - b.date)
   };
 };
 

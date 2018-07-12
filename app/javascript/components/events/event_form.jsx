@@ -11,7 +11,8 @@ class EventForm extends React.Component {
       name: this.props.event.name,
       location: this.props.event.location,
       description: this.props.event.description,
-      tickets: this.props.event.tickets
+      tickets: this.props.event.tickets,
+      date: this.props.event.date
     };
   }
 
@@ -64,6 +65,14 @@ class EventForm extends React.Component {
             type="text"
             onChange={this.update("ticket")}
             value={this.state.ticket}
+          />
+        </section>
+        <section>
+          Date:
+          <input
+            type="date"
+            onChange={this.update("date")}
+            value={this.state.date}
           />
         </section>
         <footer>
