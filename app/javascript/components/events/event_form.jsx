@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { merge } from "lodash";
+import { postEvent } from "../../actions/event_actions";
 
 class EventForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.event.rating,
+      name: this.props.event.name,
       location: this.props.event.location,
       description: this.props.event.description,
       tickets: this.props.event.tickets
@@ -32,7 +33,7 @@ class EventForm extends React.Component {
           Event Name:
           <input
             type="text"
-            onChange={this.update(name)}
+            onChange={this.update("name")}
             value={this.state.name}
           />
         </header>
@@ -40,3 +41,19 @@ class EventForm extends React.Component {
     );
   }
 }
+
+const msp = (state, ownProps) => {
+  const defaultEvent = { name: "", location: "", tickets: "", description: "" };
+  return {
+    event: defaultEvent,
+    errors: state.errors.events
+  };
+};
+
+const mdp = dispatch => {
+  return {
+    submitAction: event => dispatch(postEvent(event))
+  };
+};
+
+export default connect(msp, mdp)(EventForm);
