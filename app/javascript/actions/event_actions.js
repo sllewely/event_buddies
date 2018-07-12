@@ -29,5 +29,8 @@ export const fetchEvents = id => dispatch =>
 export const postEvent = event => dispatch =>
   EventUtils.postEvent(event).then(
     receivedEvent => dispatch(receiveEvents(receivedEvent)),
-    err => dispatch(receiveEventErrors(err))
+    err => {
+      dispatch(receiveEventErrors(err));
+      throw new Error("shit went down");
+    }
   );

@@ -18,7 +18,12 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const event = merge({}, this.state);
-    this.props.submitAction(event).then(() => this.props.history.push(`/`));
+    this.props
+      .submitAction(event)
+      .then(
+        () => this.props.history.push(`/`),
+        () => console.log("will robinson")
+      );
   }
 
   update(field) {
@@ -37,6 +42,33 @@ class EventForm extends React.Component {
             value={this.state.name}
           />
         </header>
+        <section>
+          Location:
+          <input
+            type="text"
+            onChange={this.update("location")}
+            value={this.state.location}
+          />
+        </section>
+        <section>
+          Description:
+          <textarea
+            type="text"
+            onChange={this.update("description")}
+            value={this.state.description}
+          />
+        </section>
+        <section>
+          Ticket Link:
+          <input
+            type="text"
+            onChange={this.update("ticket")}
+            value={this.state.ticket}
+          />
+        </section>
+        <footer>
+          <input type="submit" value="Create Event" />
+        </footer>
       </form>
     );
   }

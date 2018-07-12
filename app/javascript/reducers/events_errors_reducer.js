@@ -4,7 +4,9 @@ const EventsErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENT_ERRORS:
-      return action.errors.responseJSON;
+      return action.errors
+        ? action.errors.responseJSON
+        : ["something went wrong, please try again"];
     case RECEIVE_EVENTS:
       return [];
     default:
