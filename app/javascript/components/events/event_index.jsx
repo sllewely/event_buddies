@@ -11,7 +11,9 @@ const EventsIndex = ({ events }) => {
 
 const msp = state => {
   return {
-    events: Object.values(state.entities.events).sort((a, b) => a.date - b.date)
+    events: Object.values(state.entities.events).sort(
+      (a, b) => a.date - b.date || a.time - b.time
+    )
   };
 };
 

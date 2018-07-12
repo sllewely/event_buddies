@@ -7,6 +7,7 @@ const EventsReducer = (
       id: 123,
       name: "concert",
       date: "456",
+      time: "1300",
       tickets: "http://www.google.com",
       location: "here",
       description: "people playing"
@@ -15,6 +16,7 @@ const EventsReducer = (
       id: 124,
       name: "birthday",
       date: "789",
+      time: "1900",
       tickets: "http://www.example.com",
       location: "somehwre else",
       description: "cake and shit"

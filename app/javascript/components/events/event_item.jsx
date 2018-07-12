@@ -32,6 +32,7 @@ class EventItem extends React.Component {
       <article>
         <h1>{event.name}</h1>
         <h2>{event.date}</h2>
+        <h3>{event.time}</h3>
         <div onClick={this.toggleExpandedInfo()}>
           {this.state.expanded ? "Less Info" : "More Info"}
         </div>
