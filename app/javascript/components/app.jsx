@@ -1,15 +1,15 @@
 import React from "react";
 import { Route, redirect, Switch, Link, HashRouter } from "react-router-dom";
 import EventForm from "./events/event_form";
-import EventsIndex from "./events/event_index";
+import Home from "./home";
 
 const App = () => (
-  <div>
+  <main>
     <Switch>
       <Route exact path="/events/new" component={EventForm} />
-      <Route path="/" component={EventsIndex} />
+      <Route path="/" component={Home} />
     </Switch>
-  </div>
+  </main>
 );
 
 export default App;

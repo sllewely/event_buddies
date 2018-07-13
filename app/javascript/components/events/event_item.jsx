@@ -18,16 +18,16 @@ class EventItem extends React.Component {
   render() {
     const { event } = this.props;
     const visibility = this.state.expanded
-      ? "event__item_expanded"
+      ? "event__item_expanded default_text"
       : "event__item_hidden";
     return (
       <article className="event__item V_Flex">
         <section className="H_Flex">
           <div className="V_Flex">
             <div className="H_Flex">
-              <h1>{event.name}</h1>
+              <h1 className="default_text">{event.name}</h1>
               <span className="event__item_spacer">@</span>
-              <h1>{event.location}</h1>
+              <h1 className="default_text">{event.location}</h1>
             </div>
             <a href={event.tickets} target="_blank" className={visibility}>
               Buy Tickets here
@@ -35,7 +35,7 @@ class EventItem extends React.Component {
           </div>
           <div className="V_Flex">
             <div className="H_Flex">
-              <h1>{event.date}</h1>
+              <h1 className="default_text">{event.date}</h1>
               <i
                 className="material-icons md-36 md-dark event__item_toggle"
                 onClick={this.toggleExpandedInfo()}

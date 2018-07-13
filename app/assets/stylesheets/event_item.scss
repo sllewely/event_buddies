@@ -8,7 +8,6 @@
 .V_Flex {
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   justify-content: center;
 }
 
@@ -45,11 +44,11 @@
 
 .event__item {
   padding: 18px;
-  max-width: 85%;
   min-width: 500px;
+  width: 85%;
 }
 
-.event__item h1 {
+.default_text {
   font-size: 24px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
