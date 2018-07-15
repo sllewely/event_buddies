@@ -9,8 +9,7 @@ const EventsReducer = (
       date: "456",
       time: "1300",
       tickets: "http://www.google.com",
-      location:
-        "rediculously long location name, kinda like an address would be",
+      location: "217 E Houston St, New York, NY 10002",
       description: "people playing"
     },
     124: {
@@ -19,7 +18,7 @@ const EventsReducer = (
       date: "789",
       time: "1900",
       tickets: "http://www.example.com",
-      location: "somehwre else",
+      location: "The Chipped Cup",
       description: "cake and shit"
     }
   },
