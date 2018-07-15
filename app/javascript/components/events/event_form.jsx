@@ -34,12 +34,13 @@ class EventForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
+      <form className="event__form" onSubmit={e => this.handleSubmit(e)}>
         {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
         <header>
           Event Name:
           <input
             type="text"
+            className="event__form_field"
             onChange={this.update("name")}
             value={this.state.name}
           />
@@ -48,6 +49,7 @@ class EventForm extends React.Component {
           Location:
           <input
             type="text"
+            className="event__form_field"
             onChange={this.update("location")}
             value={this.state.location}
           />
@@ -56,6 +58,7 @@ class EventForm extends React.Component {
           Description:
           <textarea
             type="text"
+            className="event__form_field"
             onChange={this.update("description")}
             value={this.state.description}
           />
@@ -64,6 +67,7 @@ class EventForm extends React.Component {
           Ticket Link:
           <input
             type="text"
+            className="event__form_field"
             onChange={this.update("ticket")}
             value={this.state.ticket}
           />
@@ -72,6 +76,7 @@ class EventForm extends React.Component {
           Date:
           <input
             type="date"
+            className="event__form_field"
             onChange={this.update("date")}
             value={this.state.date}
           />
@@ -80,12 +85,17 @@ class EventForm extends React.Component {
           Time:
           <input
             type="time"
+            className="event__form_field"
             onChange={this.update("time")}
             value={this.state.time}
           />
         </section>
         <footer>
-          <input type="submit" value="Create Event" />
+          <input
+            className="event__form_submit"
+            type="submit"
+            value="Create Event"
+          />
         </footer>
       </form>
     );

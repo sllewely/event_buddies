@@ -1,16 +1,16 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.home {
+.header {
   align-items: center;
 }
 
-.home__center {
+.header__center {
   width: 100%;
   align-items: center;
 }
 
-.home_desc {
+.header_desc {
   font-family: "Roboto", sans-serif;
 }
 .material-icons.md-48 {
@@ -21,7 +21,7 @@
   color: #21d4e5;
 }
 
-.home__new_event {
+.header__new_event {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -31,6 +31,6 @@
   border: 1px solid lightgrey;
   margin: 5px 0;
 }
-.home__new_event:hover {
+.header__new_event:hover {
   background-color: #8bd8d8;
 }

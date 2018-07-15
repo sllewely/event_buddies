@@ -25,9 +25,9 @@ class EventItem extends React.Component {
         <section className="H_Flex">
           <div className="V_Flex">
             <div className="H_Flex">
-              <h1 className="default_text">{event.name}</h1>
+              <h1 className="header_text">{event.name}</h1>
               <span className="event__item_spacer">@</span>
-              <h1 className="default_text">{event.location}</h1>
+              <h1 className="header_text">{event.location}</h1>
             </div>
             <a href={event.tickets} target="_blank" className={visibility}>
               Buy Tickets here
