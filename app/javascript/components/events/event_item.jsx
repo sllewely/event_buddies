@@ -8,6 +8,18 @@ class EventItem extends React.Component {
       expanded: false
     };
   }
+  truncate(text) {
+    if (!this.state.expanded) {
+      if (text.length > 15) {
+        return text.substring(0, 12) + "...";
+      } else {
+        return text;
+      }
+    } else {
+      return text;
+    }
+  }
+
   toggleExpandedInfo() {
     return e =>
       this.setState(prevState => ({
@@ -27,7 +39,7 @@ class EventItem extends React.Component {
             <div className="H_Flex">
               <h1 className="header_text">{event.name}</h1>
               <span className="event__item_spacer">@</span>
-              <h1 className="header_text">{event.location}</h1>
+              <h1 className="header_text">{this.truncate(event.location)}</h1>
             </div>
             <a href={event.tickets} target="_blank" className={visibility}>
               Buy Tickets here

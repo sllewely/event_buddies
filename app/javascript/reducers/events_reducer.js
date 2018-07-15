@@ -9,7 +9,8 @@ const EventsReducer = (
       date: "456",
       time: "1300",
       tickets: "http://www.google.com",
-      location: "here",
+      location:
+        "rediculously long location name, kinda like an address would be",
       description: "people playing"
     },
     124: {
