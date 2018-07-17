@@ -1,9 +1,9 @@
 import React from "react";
 import UserProfilePicture from "./user_profile_picture";
 
-const UserAttendance = ({ user, eventId }) => {
+const UserAttendance = ({ user, attendance }) => {
   return (
-    <div className={`user__attendance ${user.attendance.eventId.status}`}>
+    <div className={`user__attendance ${attendance}`}>
       <UserProfilePicture user={user} />
     </div>
   );

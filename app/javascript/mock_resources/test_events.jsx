@@ -6,7 +6,9 @@ const TEST_EVENTS = {
     time: "1300",
     tickets: "http://www.google.com",
     location: "217 E Houston St, New York, NY 10002",
-    description: "people playing"
+    description: "people playing",
+    attending: [25],
+    needsTickets: [26]
   },
   124: {
     id: 124,
@@ -15,7 +17,9 @@ const TEST_EVENTS = {
     time: "1900",
     tickets: "http://www.example.com",
     location: "The Chipped Cup",
-    description: "cake and shit"
+    description: "cake and shit",
+    attending: [26],
+    needsTickets: [25]
   }
 };
 
