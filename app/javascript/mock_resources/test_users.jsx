@@ -1,13 +1,11 @@
 const TEST_USERS = {
   25: {
     id: 25,
-    username: "Harry",
-    userImage: "../mock_resources/hellboy1.jpg"
+    username: "Harry"
   },
   26: {
     id: 26,
-    username: "Not_Harry",
-    userImage: "../mock_resources/hellboy1.jpg"
+    username: "Not_Harry"
   }
 };
 
