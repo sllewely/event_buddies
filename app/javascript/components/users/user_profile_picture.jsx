@@ -1,8 +1,12 @@
 import React from "react";
 
-const UserProfilePicture = ({ userImage, username }) => {
+const UserProfilePicture = ({ user }) => {
   return (
-    <img src={userImage} alt={username} className="user__profile__picture" />
+    <img
+      src={user.userImage}
+      alt={user.username}
+      className="user__profile__picture"
+    />
   );
 };
 

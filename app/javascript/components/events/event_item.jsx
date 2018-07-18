@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UserAttendance from "../users/user_attendance";
+import { connect } from "react-redux";
 
 class EventItem extends React.Component {
   constructor(props) {
@@ -31,10 +33,13 @@ class EventItem extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { event, attendingUsers } = this.props;
     const visibility = this.state.expanded
-      ? "event__item_expanded default_text"
+      ? "event__item_expanded"
       : "event__item_hidden";
+    const attendingBubbles = attendingUsers.map(user => (
+      <UserAttendance user={user} attendance="attending" key={user.id} />
+    ));
     return (
       <article className="event__item V_Flex">
         <section className="H_Flex">
@@ -53,13 +58,17 @@ class EventItem extends React.Component {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                   event.location
                 )}`}
-                className="header_text"
+                className="header_text event__item_link"
                 target="_blank"
               >
                 {this.truncate(event.location)}
               </a>
             </div>
-            <a href={event.tickets} target="_blank" className={visibility}>
+            <a
+              href={event.tickets}
+              target="_blank"
+              className={`default_text event__item_link ${visibility}`}
+            >
               Buy Tickets here
             </a>
           </div>
@@ -73,13 +82,25 @@ class EventItem extends React.Component {
                 {this.state.expanded ? "expand_less" : "expand_more"}
               </i>
             </div>
-            <h1 className={visibility}>{event.time}</h1>
+            <h1 className={`default_text ${visibility}`}>{event.time}</h1>
           </div>
         </section>
-        <p className={visibility}>{event.description}</p>
+        <div className="V_Flex">
+          <p className={`default_text ${visibility}`}>{event.description}</p>
+          <div className={`H_Flex ${visibility}`}>{attendingBubbles}</div>
+        </div>
       </article>
     );
   }
 }
 
-export default EventItem;
+const msp = (state, ownProps) => {
+  const attendingUsers = ownProps.event.attending.map(
+    userId => state.entities.users[userId]
+  );
+  return {
+    attendingUsers
+  };
+};
+
+export default connect(msp, null)(EventItem);

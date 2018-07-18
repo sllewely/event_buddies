@@ -8,3 +8,5 @@ const UserAttendance = ({ user, attendance }) => {
     </div>
   );
 };
+
+export default UserAttendance;
