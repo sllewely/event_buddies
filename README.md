@@ -47,3 +47,7 @@ And visit
 [http://localhost:3000/](http://localhost:3000/)
 
 
+## Seed some example data in development
+
+```rake db:seed```
+
