@@ -2,8 +2,8 @@ const TEST_EVENTS = {
   123: {
     id: 123,
     name: "concert",
-    date: "456",
-    time: "1300",
+    date: "08/31/18",
+    time: "13:00",
     tickets: "http://www.google.com",
     location: "217 E Houston St, New York, NY 10002",
     description:
@@ -14,8 +14,8 @@ const TEST_EVENTS = {
   124: {
     id: 124,
     name: "birthday",
-    date: "789",
-    time: "1900",
+    date: "08/14/18",
+    time: "19:00",
     tickets: "http://www.example.com",
     location: "The Chipped Cup",
     description:
