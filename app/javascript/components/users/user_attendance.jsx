@@ -19,8 +19,8 @@ class UserAttendance extends React.Component {
   render() {
     const { user, attendance } = this.props;
     const visibility = this.state.hovered
-      ? "event__item_expanded"
-      : "event__item_hidden";
+      ? "attendance__bubble_hovered"
+      : "attendance__bubble_hidden";
     return (
       <div>
         <div
@@ -30,7 +30,9 @@ class UserAttendance extends React.Component {
         >
           <UserProfilePicture user={user} />
         </div>
-        <div className={visibility}>{`${user.username} is ${attendance}`}</div>
+        <div className={`${visibility}`}>{`${
+          user.username
+        } is ${attendance}`}</div>
       </div>
     );
   }
