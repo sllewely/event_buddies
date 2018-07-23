@@ -87,7 +87,9 @@ class EventItem extends React.Component {
         </section>
         <div className="V_Flex">
           <p className={`default_text ${visibility}`}>{event.description}</p>
-          <div className={`H_Flex ${visibility}`}>{attendingBubbles}</div>
+          <div className={`H_Flex attending__bubbles__container ${visibility}`}>
+            {attendingBubbles}
+          </div>
         </div>
       </article>
     );
