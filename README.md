@@ -19,11 +19,29 @@ brew upgrade yarn
 yarn install
 ```
 
+postgres
+```
+brew install postgresql
+# or
+brew upgrade postgresql
+brew postgresql-upgrade-database
+
+rails db:create
+rails db:migrate
+```
+
+
 ## Run
 
+Start server
 ```
 rails s
 ```
+
+Start db
+```pg_ctl -D /usr/local/var/postgres start```
+Stop db
+```pg_ctl -D /usr/local/var/postgres stop -s -m fast```
 
 And visit
 [http://localhost:3000/](http://localhost:3000/)
