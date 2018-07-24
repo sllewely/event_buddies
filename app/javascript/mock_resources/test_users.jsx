@@ -9,31 +9,31 @@ const TEST_USERS = {
   },
   27: {
     id: 27,
-    username: "7"
+    username: "Elizabeth"
   },
   28: {
     id: 28,
-    username: "8"
+    username: "Jerry"
   },
   29: {
     id: 29,
-    username: "9"
+    username: "Genevieve"
   },
   30: {
     id: 30,
-    username: "0"
+    username: "Jess"
   },
   31: {
     id: 31,
-    username: "1"
+    username: "Alex"
   },
   32: {
     id: 32,
-    username: "2"
+    username: "Dakota"
   },
   33: {
     id: 33,
-    username: "3"
+    username: "Detroit"
   }
 };
 
