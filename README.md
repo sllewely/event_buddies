@@ -47,3 +47,15 @@ And visit
 [http://localhost:3000/](http://localhost:3000/)
 
 
+## Development
+
+
+Seed some example data in development
+```rake db:seed```
+
+Annotate models whenever you change the db schema
+```rake annotate_models```
+
+Run tests
+```bundle exec rspec```
+
