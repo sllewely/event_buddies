@@ -8,5 +8,4 @@ RSpec.describe 'Events API', type: :request do
       expect(Event.all.any?{ |event| event.name == 'Mini Mansions'}).to be(true)
     end
   end
-
 end
