@@ -6,6 +6,7 @@ class EventsController < ApiController
 
   def create
     # TODO: merge user id
+    # byebug
     event = Event.create!(event_params)
     json_response(event)
   end
