@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Events API', type: :request do
-  # include Devise::Test::ControllerHelpers
+  #
 
   let(:user) { FactoryBot.create :user }
 
