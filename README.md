@@ -1,5 +1,13 @@
 # README
 
+## About
+
+This is an app for letting friends know about upcoming events that they may be interested in, without resorting to individual invites or something as clunky/weighty as Facebook Groups or events.
+
+The goal is to be able to broadcast events to tailored groups of people, without the pressure of an individualized invite.
+
+##Technologies Used
+
 Ruby version 2.5.1
 Rails version 5.2.0
 
@@ -58,4 +66,3 @@ Annotate models whenever you change the db schema
 
 Run tests
 ```bundle exec rspec```
-
