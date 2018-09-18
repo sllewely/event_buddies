@@ -43,11 +43,6 @@ Start db
 Stop db
 ```pg_ctl -D /usr/local/var/postgres stop -s -m fast```
 
-Build ReactJs
-```
-./bin/webpack
-```
-
 And visit
 [http://localhost:3000/](http://localhost:3000/)
 
