@@ -65,6 +65,8 @@ RSpec.configure do |config|
   config.include RequestSpecHelper, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
 
+  config.include FactoryBot::Syntax::Methods
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
