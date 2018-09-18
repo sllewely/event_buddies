@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2018_09_09_183541) do
     t.string "event_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
