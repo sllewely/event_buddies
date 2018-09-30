@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_021154) do
+ActiveRecord::Schema.define(version: 2018_09_30_182848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
+
+  create_table "event_statuses", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_statuses_on_event_id"
+    t.index ["user_id"], name: "index_event_statuses_on_user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -25,9 +34,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_021154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
-    t.index ["uuid"], name: "index_events_on_uuid", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,10 +52,8 @@ ActiveRecord::Schema.define(version: 2018_10_05_021154) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
 end
