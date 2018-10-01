@@ -68,7 +68,7 @@ class EventForm extends React.Component {
           <input
             type="text"
             className="event__form_field"
-            onChange={this.update("ticket")}
+            onChange={this.update("tickets")}
             value={this.state.ticket}
           />
         </section>

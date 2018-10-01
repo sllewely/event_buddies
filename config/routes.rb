@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :events do
-
-  end
+  resources :events, only: [:index, :create]
 end
