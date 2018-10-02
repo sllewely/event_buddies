@@ -6,7 +6,7 @@ class EventsController < ApiController
 
   def create
     event = Event.create!(event_params.merge!(user: current_user))
-    json_response(event)
+    json_response([event])
   end
 
   private

@@ -11,7 +11,7 @@ class EventForm extends React.Component {
       name: this.props.event.name,
       location: this.props.event.location,
       description: this.props.event.description,
-      tickets: this.props.event.tickets,
+      event_link: this.props.event.event_link,
       date: this.props.event.date,
       time: this.props.event.time
     };
@@ -35,7 +35,9 @@ class EventForm extends React.Component {
   render() {
     return (
       <form className="event__form" onSubmit={e => this.handleSubmit(e)}>
-        {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {this.props.errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
         <header>
           Event Name:
           <input
@@ -68,7 +70,7 @@ class EventForm extends React.Component {
           <input
             type="text"
             className="event__form_field"
-            onChange={this.update("tickets")}
+            onChange={this.update("event_link")}
             value={this.state.ticket}
           />
         </section>
@@ -103,7 +105,12 @@ class EventForm extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  const defaultEvent = { name: "", location: "", tickets: "", description: "" };
+  const defaultEvent = {
+    name: "",
+    location: "",
+    event_link: "",
+    description: ""
+  };
   return {
     event: defaultEvent,
     errors: state.errors.events
@@ -116,4 +123,7 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(msp, mdp)(EventForm);
+export default connect(
+  msp,
+  mdp
+)(EventForm);
