@@ -22,7 +22,7 @@ export const fetchEvent = id => dispatch =>
 
 export const fetchEvents = () => dispatch =>
   EventUtils.fetchEvents().then(
-    receivedEvents => dispatch(receiveEvents(receiveEvents)),
+    receivedEvents => dispatch(receiveEvents(receivedEvents)),
     err => dispatch(receiveEventErrors(err))
   );
 

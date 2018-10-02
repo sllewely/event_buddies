@@ -97,7 +97,6 @@ class EventItem extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  debugger;
   const attendingUsers = ownProps.event.attending
     ? ownProps.event.attending.map(userId => state.entities.users[userId])
     : [];
