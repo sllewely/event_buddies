@@ -102,7 +102,8 @@ const msp = (state, ownProps) => {
     event_link: "",
     description: "",
     date_time: moment()
-      .hour(19)
+      .hour(20)
+      .minute(30)
       .add(7, "d")
   };
   return {

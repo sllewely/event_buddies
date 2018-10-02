@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import UserAttendance from "../users/user_attendance";
 import { connect } from "react-redux";
+import * as moment from "moment";
 
 class EventItem extends React.Component {
   constructor(props) {
@@ -22,8 +23,6 @@ class EventItem extends React.Component {
       return text;
     }
   }
-
-  toGoogleMaps(address) {}
 
   toggleExpandedInfo() {
     return e =>
@@ -65,7 +64,7 @@ class EventItem extends React.Component {
               </a>
             </div>
             <a
-              href={event.tickets}
+              href={event.event_link}
               target="_blank"
               className={`default_text event__item_link ${visibility}`}
             >
@@ -74,7 +73,9 @@ class EventItem extends React.Component {
           </div>
           <div className="V_Flex">
             <div className="H_Flex">
-              <h1 className="default_text">{event.date}</h1>
+              <h1 className="default_text">
+                {event.date_time.format("dddd, MMMM Do YYYY")}
+              </h1>
               <i
                 className="material-icons md-36 md-dark event__item_toggle"
                 onClick={this.toggleExpandedInfo()}
@@ -82,7 +83,9 @@ class EventItem extends React.Component {
                 {this.state.expanded ? "expand_less" : "expand_more"}
               </i>
             </div>
-            <h1 className={`default_text ${visibility}`}>{event.time}</h1>
+            <h1 className={`default_text ${visibility}`}>
+              {event.date_time.format("h:mm A")}
+            </h1>
           </div>
         </section>
         <div className="V_Flex">
