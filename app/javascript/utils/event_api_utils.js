@@ -10,7 +10,7 @@ export const fetchEvent = async id => {
 };
 
 export const fetchEvents = async () => {
-  const fetchResult = fetch(`/event`);
+  const fetchResult = fetch(`/events`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();

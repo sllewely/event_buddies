@@ -1,13 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import EventItem from "./event_item";
+import { fetchEvents } from "../../actions/event_actions.js";
 
-const EventsIndex = ({ events }) => {
-  const allEvents = events.map(event => (
-    <EventItem event={event} key={event.id} />
-  ));
-  return allEvents;
-};
+class EventsIndex extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
+  render() {
+    const allEvents = this.props.events.map(event => (
+      <EventItem event={event} key={event.id} />
+    ));
+    return allEvents;
+  }
+}
 
 const msp = state => {
   return {
@@ -17,4 +28,13 @@ const msp = state => {
   };
 };
 
-export default connect(msp, null)(EventsIndex);
+const mdp = dispatch => {
+  return {
+    fetchEvents: () => dispatch(fetchEvents())
+  };
+};
+
+export default connect(
+  msp,
+  mdp
+)(EventsIndex);
