@@ -3,7 +3,7 @@ import { RECEIVE_EVENTS } from "../actions/event_actions";
 import TEST_EVENTS from "../mock_resources/test_events";
 import * as moment from "moment";
 
-const EventsReducer = (state = TEST_EVENTS, action) => {
+const EventsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENTS:
