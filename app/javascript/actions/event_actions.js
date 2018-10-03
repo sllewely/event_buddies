@@ -20,9 +20,9 @@ export const fetchEvent = id => dispatch =>
     err => dispatch(receiveEventErrors(err))
   );
 
-export const fetchEvents = id => dispatch =>
+export const fetchEvents = () => dispatch =>
   EventUtils.fetchEvents().then(
-    receivedEvents => dispatch(receiveEvents(receiveEvents)),
+    receivedEvents => dispatch(receiveEvents(receivedEvents)),
     err => dispatch(receiveEventErrors(err))
   );
 

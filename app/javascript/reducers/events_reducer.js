@@ -6,7 +6,9 @@ const EventsReducer = (state = TEST_EVENTS, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENTS:
-      return merge({}, state, action.payload.events);
+      let newEvents = {};
+      action.payload.forEach(event => (newEvents[event.id] = event));
+      return merge({}, state, newEvents);
     default:
       return state;
   }

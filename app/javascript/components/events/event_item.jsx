@@ -97,12 +97,15 @@ class EventItem extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  const attendingUsers = ownProps.event.attending.map(
-    userId => state.entities.users[userId]
-  );
+  const attendingUsers = ownProps.event.attending
+    ? ownProps.event.attending.map(userId => state.entities.users[userId])
+    : [];
   return {
     attendingUsers
   };
 };
 
-export default connect(msp, null)(EventItem);
+export default connect(
+  msp,
+  null
+)(EventItem);
