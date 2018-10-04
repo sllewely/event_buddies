@@ -1,4 +1,4 @@
-class EventsController < ApiController
+class API::V1::EventsController < API::V1::APIController
   def index
     @events = Event.all
     json_response(@events)

@@ -16,5 +16,6 @@ module ConcertBuddies
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     # config.react.addons = false
+    config.autoload_paths += Dir["#{config.root}/app/controllers/**/"]
   end
 end
