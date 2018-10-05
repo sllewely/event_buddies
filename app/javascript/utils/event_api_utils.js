@@ -1,5 +1,5 @@
 export const fetchEvent = async id => {
-  const fetchResult = fetch(`/event/${id}`);
+  const fetchResult = fetch(`/api/v1/event/${id}`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -10,7 +10,7 @@ export const fetchEvent = async id => {
 };
 
 export const fetchEvents = async () => {
-  const fetchResult = fetch(`/events`);
+  const fetchResult = fetch(`/api/v1/events`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -21,7 +21,7 @@ export const fetchEvents = async () => {
 };
 
 export const postEvent = async event => {
-  const response = await fetch("/events", {
+  const response = await fetch("/api/v1/events", {
     method: "POST",
     headers: {
       Accept: "application/json",
