@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { merge } from "lodash";
 import { postEvent } from "../../actions/event_actions";
+import Datetime from "react-datetime";
+import * as moment from "moment";
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -12,8 +14,7 @@ class EventForm extends React.Component {
       location: this.props.event.location,
       description: this.props.event.description,
       event_link: this.props.event.event_link,
-      date: this.props.event.date,
-      time: this.props.event.time
+      date_time: this.props.event.date_time
     };
   }
 
@@ -76,20 +77,10 @@ class EventForm extends React.Component {
         </section>
         <section>
           Date:
-          <input
-            type="date"
+          <Datetime
             className="event__form_field"
-            onChange={this.update("date")}
-            value={this.state.date}
-          />
-        </section>
-        <section>
-          Time:
-          <input
-            type="time"
-            className="event__form_field"
-            onChange={this.update("time")}
-            value={this.state.time}
+            onChange={date_time => this.setState({ date_time })}
+            value={this.state.date_time}
           />
         </section>
         <footer>
@@ -109,7 +100,11 @@ const msp = (state, ownProps) => {
     name: "",
     location: "",
     event_link: "",
-    description: ""
+    description: "",
+    date_time: moment()
+      .hour(20)
+      .minute(30)
+      .add(7, "d")
   };
   return {
     event: defaultEvent,

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import EventItem from "./event_item";
 import { fetchEvents } from "../../actions/event_actions.js";
+import * as moment from "moment";
 
 class EventsIndex extends React.Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class EventsIndex extends React.Component {
 
 const msp = state => {
   return {
-    events: Object.values(state.entities.events).sort(
-      (a, b) => a.date - b.date || a.time - b.time
+    events: Object.values(state.entities.events).sort((a, b) =>
+      a.date_time.diff(b.date_time)
     )
   };
 };

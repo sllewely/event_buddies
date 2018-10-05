@@ -1,10 +1,13 @@
+import * as moment from "moment";
+
 const TEST_EVENTS = {
   123: {
     id: 123,
     name: "concert",
-    date: "08/31/18",
-    time: "13:00",
-    tickets: "http://www.google.com",
+    date_time: moment()
+      .add(4, "d")
+      .minutes(0),
+    event_link: "http://www.google.com",
     location: "217 E Houston St, New York, NY 10002",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -14,9 +17,12 @@ const TEST_EVENTS = {
   124: {
     id: 124,
     name: "birthday",
-    date: "08/14/18",
+    date_time: moment()
+      .add(6, "days")
+      .minutes(45)
+      .hour(18),
     time: "19:00",
-    tickets: "http://www.example.com",
+    event_link: "http://www.example.com",
     location: "The Chipped Cup",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
