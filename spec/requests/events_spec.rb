@@ -15,7 +15,7 @@ RSpec.describe 'Events API', type: :request do
       event = Event.find_by(name: params[:name])
 
       expect(event).to be_persisted
-      expect(event.first.creator).to eq(user)
+      expect(event.creator).to eq(user)
       expect(event.uuid).not_to be_nil
     end
   end
