@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :events, param: :uuid, only: [:index, :create]
+      resources :events, param: :uuid, only: [:index, :create, :set_status] do
+        member do
+          post 'set_status'
+        end
+      end
     end
   end
 end

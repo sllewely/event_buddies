@@ -19,4 +19,14 @@ RSpec.describe 'Events API', type: :request do
       expect(event.uuid).not_to be_nil
     end
   end
+
+  describe 'POST /set_status' do
+    let(:event) { create :event }
+    let(:params) { { event: 1} }
+
+    it 'sets event to going' do
+      post '/api/v1/events/set_status', params: params
+
+    end
+  end
 end
