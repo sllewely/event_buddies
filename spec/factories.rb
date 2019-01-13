@@ -8,7 +8,7 @@ FactoryBot.define do
 
   factory :event do
     name 'Yeah Yeah Yeah'
-    creator :user
+    association :creator, factory: :user
     date_time '2018-7-23-21.5'
   end
 end

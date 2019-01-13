@@ -24,8 +24,12 @@ RSpec.describe 'Events API', type: :request do
     let(:event) { create :event }
     let(:params) { { event: 1} }
 
+    before do
+      # sign_in user
+    end
+
     it 'sets event to going' do
-      post '/api/v1/events/set_status', params: params
+      post "/api/v1/events/#{event.uuid}/set_status", params: params
 
     end
   end
