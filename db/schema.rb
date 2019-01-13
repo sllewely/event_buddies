@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2018_10_05_014310) do
   enable_extension "uuid-ossp"
 
   create_table "event_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "event_id", null: false
-    t.bigint "user_id", null: false
-    t.string "status", default: "none"
+    t.uuid "event_id", null: false
+    t.uuid "user_id", null: false
+    t.string "status", default: "no_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_statuses_on_event_id"
