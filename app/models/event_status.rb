@@ -2,7 +2,7 @@ class EventStatus < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  enum status: [:interested, :going, :cant_go, :not_interested, :no_status]
+  STATUSES =  [:interested, :going, :cant_go, :not_interested, :no_status]
 
   # scope :for_user, -> (user) { joins(:events).for_user(user) }
 

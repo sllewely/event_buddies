@@ -5,7 +5,7 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def create
-    event = Event.create!(event_params.merge!(creator: current_user))
+    event = Event.create(event_params.merge!(creator: current_user))
     json_response([event])
   end
 
@@ -15,7 +15,7 @@ class API::V1::EventsController < API::V1::APIController
     # event_status = EventStatus.where(event: params[:event_id], user: current_user).first_or_create!
     # event_status.update!(status_params)
     # binding.pry
-    EventStatus.create!(status_params.merge!(user_id: current_user.id))
+    EventStatus.create(status_params.merge!(user_id: current_user.id))
     binding.pry
     4
   end
