@@ -16,7 +16,7 @@ RSpec.describe 'Events API', type: :request do
 
       expect(event).to be_persisted
       expect(event.creator).to eq(user)
-      expect(event.uuid).not_to be_nil
+      expect(event.id).not_to be_nil
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Events API', type: :request do
     end
 
     it 'sets event to going' do
-      post "/api/v1/events/#{event.uuid}/set_status", params: params
+      post "/api/v1/events/#{event.id}/set_status", params: params
 
     end
   end
