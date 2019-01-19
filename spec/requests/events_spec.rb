@@ -39,7 +39,15 @@ RSpec.describe 'Events API', type: :request do
     end
 
     it 'updates existing status' do
+      post "/api/v1/events/#{event.id}/set_status", params: params.merge!(status: 'interested')
+      events = EventStatus.where(user: user, event: event)
+      expect(events.size).to eq(1)
+      expect(events.first.status).to eq('interested')
 
+      post "/api/v1/events/#{event.id}/set_status", params: params.merge!(status: 'cant_go')
+      events = EventStatus.where(user: user, event: event)
+      expect(events.size).to eq(1)
+      expect(events.first.status).to eq('cant_go')
     end
   end
 end
