@@ -65,4 +65,7 @@ Annotate models whenever you change the db schema
 `rake annotate_models`
 
 Run tests
-`bundle exec rspec`
+```
+bundle exec rails db:migrate RAILS_ENV=test
+bundle exec rspec
+```

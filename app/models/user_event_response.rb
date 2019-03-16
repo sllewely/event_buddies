@@ -1,4 +1,4 @@
-class EventStatus < ApplicationRecord
+class UserEventResponse < ApplicationRecord
   belongs_to :user
   belongs_to :event
 

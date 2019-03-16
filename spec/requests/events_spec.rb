@@ -19,35 +19,4 @@ RSpec.describe 'Events API', type: :request do
       expect(event.id).not_to be_nil
     end
   end
-
-  describe 'POST /set_status' do
-    let(:event) { create :event, creator: user }
-    let(:params) { { event_id: event.id, } }
-
-    before do
-      sign_in user
-    end
-
-    it 'sets event to going' do
-      post "/api/v1/events/#{event.id}/set_status", params: params.merge!(status: 'going')
-
-      event_status = EventStatus.find_by(user: user, event: event)
-      expect(event_status).to be_persisted
-      expect(event_status.user).to eq(user)
-      expect(event_status.status).to eq('going')
-      expect(event_status.id).not_to be_nil
-    end
-
-    it 'updates existing status' do
-      post "/api/v1/events/#{event.id}/set_status", params: params.merge!(status: 'interested')
-      events = EventStatus.where(user: user, event: event)
-      expect(events.size).to eq(1)
-      expect(events.first.status).to eq('interested')
-
-      post "/api/v1/events/#{event.id}/set_status", params: params.merge!(status: 'cant_go')
-      events = EventStatus.where(user: user, event: event)
-      expect(events.size).to eq(1)
-      expect(events.first.status).to eq('cant_go')
-    end
-  end
 end

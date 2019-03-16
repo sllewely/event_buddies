@@ -10,22 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_014310) do
+ActiveRecord::Schema.define(version: 2019_03_16_193650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-
-  create_table "event_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "event_id", null: false
-    t.uuid "user_id", null: false
-    t.string "status", default: "no_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_statuses_on_event_id"
-    t.index ["user_id"], name: "index_event_statuses_on_user_id"
-  end
 
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
@@ -37,6 +27,17 @@ ActiveRecord::Schema.define(version: 2018_10_05_014310) do
     t.datetime "updated_at", null: false
     t.uuid "creator_id", null: false
     t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
+
+  create_table "user_event_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "user_id", null: false
+    t.string "status", default: "no_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_event_responses_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_user_event_responses_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_user_event_responses_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :event_statuses
+  has_many :user_event_responses
   has_many :events, through: :event_statuses
 
   # Include default devise modules. Others available are:
