@@ -5,15 +5,19 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def create
-    event = Event.create(event_params.merge!(creator: current_user))
+    event = Event.create!(event_params.merge!(creator: current_user))
     json_response([event])
   end
 
 
   def set_status
-    event = EventStatus.first_or_initialize(status_params.slice(:event_id).merge!(user_id: current_user.id))
-    event.status = status_params[:status]
-    event.save!
+    # binding.pry
+    status = current_user.event_statuses.find_or_initialize_by(event_id: params[:uuid])
+    if status.update(status_params)
+      #some success json
+    else
+      render json: status.errors.full_messages, status: 422
+    end
   end
 
   private
