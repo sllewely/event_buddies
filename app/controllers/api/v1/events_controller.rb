@@ -23,6 +23,6 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def status_params
-    params.permit(:event_id, :status)
+    params.require(:set_status).permit(:status)
   end
 end
