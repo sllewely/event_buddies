@@ -17,5 +17,9 @@ module ConcertBuddies
     # the framework and any gems in your application.
     # config.react.addons = false
     config.autoload_paths += Dir["#{config.root}/app/controllers/**/"]
+
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end

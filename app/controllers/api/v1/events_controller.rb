@@ -5,7 +5,7 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def create
-    event = Event.create!(event_params.merge!(user: current_user))
+    event = Event.create!(event_params.merge!(creator: current_user))
     json_response([event])
   end
 

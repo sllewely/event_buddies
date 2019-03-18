@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :events, param: :uuid, only: [:index, :create]
+      resources :events, param: :id, only: [:index, :create] do
+        resources :user_event_responses, only: [:create]
+      end
     end
   end
 end
