@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 2019_03_16_193650) do
   create_table "user_event_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
     t.uuid "user_id", null: false
-    t.string "status", default: "no_status"
+    t.string "status", default: "no_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_user_event_responses_on_event_id"
+    t.index ["status"], name: "index_user_event_responses_on_status"
     t.index ["user_id", "event_id"], name: "index_user_event_responses_on_user_id_and_event_id", unique: true
     t.index ["user_id"], name: "index_user_event_responses_on_user_id"
   end
