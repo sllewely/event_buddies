@@ -1,6 +1,7 @@
 import React from "react";
 import EventsIndex from "./events/event_index";
 import { Link } from "react-router-dom";
+import LogoutButton from "./session/logout_button";
 
 const Header = props => {
   return (
@@ -15,6 +16,7 @@ const Header = props => {
           <i className="material-icons">add</i>
           <h1 className="default_text">Post a Show</h1>
         </Link>
+        <LogoutButton />
       </header>
     </div>
   );

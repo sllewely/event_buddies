@@ -25,7 +25,8 @@ export const postEvent = async event => {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-type": "application/json"
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token
     },
     body: JSON.stringify(event)
   });
