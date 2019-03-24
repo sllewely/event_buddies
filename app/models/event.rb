@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  # the creator of the event
-  belongs_to :user
-
+  belongs_to :creator, class_name: 'User'
+  has_many :user_event_responses
+  has_many :users, through: :event_statuses
 end

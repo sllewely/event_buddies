@@ -6,6 +6,9 @@ This is an app for letting friends know about upcoming events that they may be i
 
 The goal is to be able to broadcast events to tailored groups of people, without the pressure of an individualized invite.
 
+[New dev guide](https://github.com/sllewely/concert_buddies/blob/master/NEWDEV.md)
+
+
 ## Technologies Used
 
 Ruby version 2.5.1
@@ -65,4 +68,7 @@ Annotate models whenever you change the db schema
 `rake annotate_models`
 
 Run tests
-`bundle exec rspec`
+```
+bundle exec rails db:migrate RAILS_ENV=test
+bundle exec rspec
+```
