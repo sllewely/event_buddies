@@ -19,7 +19,7 @@ export const login = user => dispatch =>
     receivedUser => dispatch(receiveCurrentUser(receivedUser)),
     err => {
       dispatch(receiveSessionErrors(err));
-      throw new Error("shit went down");
+      throw new Error("Session Login Error");
     }
   );
 
@@ -28,6 +28,6 @@ export const logout = () => dispatch =>
     () => dispatch(receiveCurrentUser(null)),
     err => {
       dispatch(receiveSessionErrors(err));
-      throw new Error("shit went down");
+      throw new Error("Session Logout Error");
     }
   );

@@ -20,7 +20,7 @@ export const fetchUsers = async () => {
   }
 };
 
-export const postUser = async user => {
+export const createUser = async user => {
   const response = await fetch("/users", {
     method: "POST",
     headers: {

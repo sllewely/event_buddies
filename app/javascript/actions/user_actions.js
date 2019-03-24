@@ -26,11 +26,11 @@ export const fetchUsers = () => dispatch =>
     err => dispatch(receiveUserErrors(err))
   );
 
-export const postUser = user => dispatch =>
-  UserUtils.postUser(user).then(
+export const createUser = user => dispatch =>
+  UserUtils.createUser(user).then(
     receivedUser => dispatch(receiveUsers(receivedUser)),
     err => {
       dispatch(receiveUserErrors(err));
-      throw new Error("shit went down");
+      throw new Error("Create User Error");
     }
   );
