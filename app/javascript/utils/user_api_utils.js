@@ -37,19 +37,3 @@ export const createUser = async user => {
     throw Error(response.statusText);
   }
 };
-
-// export const deleteUser = async () => {
-//   const response = await fetch("/users/cancel", {
-//     method: "DELETE",
-//     headers: {
-//       Accept: "application/json",
-//       "Content-type": "application/json",
-//       "X-CSRF-Token": window.token
-//     },
-//   });
-//   if (response.ok) {
-//     return;
-//   } else {
-//     throw Error(response.statusText);
-//   }
-// };

@@ -1,6 +1,5 @@
 import { merge } from "lodash";
 import { RECEIVE_EVENTS } from "../actions/event_actions";
-import TEST_EVENTS from "../mock_resources/test_events";
 import * as moment from "moment";
 
 const EventsReducer = (state = [], action) => {

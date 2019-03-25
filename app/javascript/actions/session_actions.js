@@ -1,7 +1,6 @@
 import * as SessionUtils from "../utils/session_api_utils";
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const RECEIVE_SESSIONS = "RECEIVE_SESSIONS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
 const receiveCurrentUser = payload => ({

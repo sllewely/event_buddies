@@ -1,8 +1,7 @@
 import { merge } from "lodash";
 import { RECEIVE_USERS } from "../actions/user_actions";
-import TEST_USERS from "../mock_resources/test_users";
 
-const UsersReducer = (state = TEST_USERS, action) => {
+const UsersReducer = (state, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_USERS:
