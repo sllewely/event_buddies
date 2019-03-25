@@ -1,15 +1,21 @@
 import React from "react";
-import { Route, redirect, Switch, Link, HashRouter } from "react-router-dom";
-import EventForm from "./events/event_form";
-import EventIndex from "./events/event_index";
-import Header from "./header";
+import { Switch } from "react-router-dom";
+import Router from "./router";
+import LoginForm from "./session/login_form";
+import SignupForm from "./users/signup_form";
+import { AuthRoute, ProtectedRoute, ConRoute } from "../utils/route_utils";
 
 const App = () => (
   <main>
-    <Header />
     <Switch>
-      <Route exact path="/events/new" component={EventForm} />
-      <Route path="/" component={EventIndex} />
+      <AuthRoute exact path="/login" component={LoginForm} />
+      <AuthRoute exact path="/signup" component={SignupForm} />
+      <ConRoute
+        path="/"
+        conditional={loggedStatus => loggedStatus}
+        FalseComp={LoginForm}
+        TrueComp={Router}
+      />
     </Switch>
   </main>
 );

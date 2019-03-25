@@ -1,6 +1,5 @@
 import * as UserUtils from "../utils/user_api_utils";
 
-// export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const RECEIVE_USERS = "RECEIVE_USERS";
 
@@ -22,15 +21,7 @@ export const fetchUser = id => dispatch =>
 
 export const fetchUsers = () => dispatch =>
   UserUtils.fetchUsers().then(
-    receivedUsers => dispatch(receiveUsers(receiveUsers)),
+    receivedUsers => dispatch(receiveUsers(receivedUsers)),
     err => dispatch(receiveUserErrors(err))
   );
 
-export const createUser = user => dispatch =>
-  UserUtils.createUser(user).then(
-    receivedUser => dispatch(receiveUsers(receivedUser)),
-    err => {
-      dispatch(receiveUserErrors(err));
-      throw new Error("Create User Error");
-    }
-  );
