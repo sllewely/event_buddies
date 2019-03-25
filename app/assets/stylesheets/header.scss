@@ -34,3 +34,21 @@
 .header__new_event:hover {
   background-color: #8bd8d8;
 }
+
+.H_Flex_header {
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header__left,
+.header__right {
+  display: flex;
+  flex-direction: row;
+  // border: 1px solid red;
+  align-items: center;
+}
+
+.logout_button:hover {
+  cursor: pointer;
+}
