@@ -16,22 +16,23 @@ const Header = props => {
           </div>
           <div className="header__right">
             <Link to="/friends">
-              <i className="material-icons" title="Friends">
+              <i className="material-icons md-48" title="Friends">
                 people
               </i>
             </Link>
             <Link to="/settings">
-              <i className="material-icons" title="Settings">
+              <i className="material-icons md-48" title="Settings">
                 settings
               </i>
             </Link>
             <LogoutButton />
           </div>
         </div>
+        <div className="border_line" />
         <Link className="header__new_event" to="/events/new">
           {" "}
-          <i className="material-icons">add</i>
           <h1 className="default_text">Post a Show</h1>
+          <i className="material-icons">add</i>
         </Link>
       </header>
     </div>

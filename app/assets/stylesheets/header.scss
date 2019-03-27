@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.header__title {
+  font-size: 24px;
+}
+
 .header_desc {
   font-family: "Roboto", sans-serif;
 }
@@ -51,4 +55,9 @@
 
 .logout_button:hover {
   cursor: pointer;
+}
+
+.border_line {
+  width: 1300px;
+  border-bottom: 1px solid black;
 }

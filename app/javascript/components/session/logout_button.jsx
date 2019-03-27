@@ -11,7 +11,7 @@ class LogoutButton extends React.Component {
   render() {
     return (
       <div className="logout_button" onClick={this.props.logout}>
-        <i className="material-icons" title="logout">
+        <i className="material-icons md-48" title="logout">
           eject
         </i>
       </div>
