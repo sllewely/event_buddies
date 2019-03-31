@@ -72,3 +72,40 @@ Run tests
 bundle exec rails db:migrate RAILS_ENV=test
 bundle exec rspec
 ```
+
+## Docker Compose setup
+
+Note: This is pretty new, and may have some rough edges:
+
+On Mac, install [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/). This _should_ be all the setup needed, but I couldn't test it.
+
+On Linux, install `docker` and `docker-compose` from your distro's repository. Ensure you add your user to the `docker` group and restart or log in/out of your session.
+
+To start the local dev environment run:
+```
+./dev.sh
+```
+This may take a few minutes the first time you run it, but subsequent runs will be faster as the docker image layers will be cached.
+The dev environment should now be available at [http://localhost:3000/](http://localhost:3000/)
+
+If you change any of the gem or npm dependencies, run `./dev.sh` again so the image will be rebuilt with the new dependencies.
+
+If you would like to tail the dev server's logs run:
+```
+docker-compose logs -f
+```
+
+If you would like to stop the dev environment, run:
+```
+docker-compose kill
+```
+
+If you would like to completely wipe the current environment (*including wiping your local database*):
+```
+docker-compose down
+```
+
+You can run tests with:
+```
+./test.sh
+```
