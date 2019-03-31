@@ -16,6 +16,7 @@ RSpec.describe 'Events API', type: :request do
 
       expect(event).to be_persisted
       expect(event.id).not_to be_nil
+      expect(event.hosts).to match_array([user])
     end
   end
 
