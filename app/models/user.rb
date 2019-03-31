@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :user_event_responses
-  has_many :events, through: :event_statuses
+  has_many :followed_events, through: :event_statuses
   has_many :friendships
   has_many :friends, through: :friendships, class_name: 'User'
   has_many :friendship_requests

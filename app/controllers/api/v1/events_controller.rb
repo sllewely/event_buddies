@@ -9,6 +9,10 @@ class API::V1::EventsController < API::V1::APIController
     json_response([event])
   end
 
+  def show
+    json_response(Event.find(params[:id]))
+  end
+
   private
 
   def event_params
