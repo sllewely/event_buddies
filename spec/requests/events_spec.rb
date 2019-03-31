@@ -19,4 +19,18 @@ RSpec.describe 'Events API', type: :request do
       expect(event.id).not_to be_nil
     end
   end
+
+  describe 'GET /events' do
+    it 'gets all of the events I have subscribed to' do
+
+    end
+
+    it 'gets all of the events I have created' do
+
+    end
+
+    it 'gets all of the events I am subscribed to or am the host of' do
+
+    end
+  end
 end
