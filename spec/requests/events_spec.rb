@@ -8,7 +8,7 @@ RSpec.describe 'Events API', type: :request do
 
     before do
       sign_in user
-      post '/api/v1/events', params: params
+      post '/api/v1/events', params: params, as: :json
     end
 
     it 'creates an event' do
@@ -22,12 +22,25 @@ RSpec.describe 'Events API', type: :request do
   end
 
   describe 'GET /events' do
+    let(:event1) { create :event }
+    let(:event2) { create :event2 }
+    let(:user2) { create :user2 }
+
+    before do
+      sign_in user
+    end
+
     it 'gets all of the events I have subscribed to' do
 
     end
 
     it 'gets all of the events I have created' do
+      post '/api/v1/events', params: { name: 'Mini Mansions', date_time: '2018-7-23-21.5' }
+      post '/api/v1/events', params: { name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5' }
 
+      response = get '/api/v1/events', as: :json
+      binding.pry
+      5
     end
 
     it 'gets all of the events I am subscribed to or am the host of' do

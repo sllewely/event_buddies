@@ -15,7 +15,21 @@ FactoryBot.define do
 
   factory :event do
     name { 'Yeah Yeah Yeah' }
-    # association :creator, factory: :user
     date_time { '2018-7-23-21.5' }
+  end
+
+  factory :event2 do
+    name { 'Board Games at My Place' }
+    date_time { '2018-8-16-14' }
+  end
+
+  factory :event3 do
+    name { 'System of a Down' }
+    date_time { '2018-9-12-20' }
+  end
+
+  factory :event4 do
+    name { 'Elizabeth Colour Wheel' }
+    date_time { '2018-10-25-11.5' }
   end
 end

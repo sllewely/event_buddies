@@ -1,6 +1,6 @@
 class API::V1::EventsController < API::V1::APIController
   def index
-    @events = Event.all
+    @events = current_user.events
     json_response(@events)
   end
 
