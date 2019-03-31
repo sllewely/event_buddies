@@ -4,6 +4,13 @@ class UserEventResponse < ApplicationRecord
 
   STATUSES =  [:interested, :going, :cant_go, :not_interested, :no_status]
 
-  #TODO: validate status
+  validate :valid_status
+
+  def valid_status
+    if !STATUSES.include?(status.to_sym)
+      errors.add(:status, "status #{status} not valid")
+    end
+  end
+
   # TODO: validate user has access to associated event
 end

@@ -5,8 +5,12 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def create
-    event = Event.create!(event_params.merge!(creator: current_user))
-    json_response([event])
+    ActiveRecord::Base.transaction do
+      @event = Event.create!(event_params)
+      UserEventResponse.create!(event: @event, user: current_user, host: true, status: :going)
+    end
+
+    json_response([@event])
   end
 
   def show

@@ -4,7 +4,7 @@ RSpec.describe 'User Event Responses API', type: :request do
   let(:user) { create :user }
 
   describe 'POST /events/:id/user_event_response' do
-    let(:event) { create :event, creator: user }
+    let(:event) { create :event }
 
     before do
       sign_in user
@@ -15,7 +15,6 @@ RSpec.describe 'User Event Responses API', type: :request do
 
       event_status = UserEventResponse.find_by(user: user, event: event)
       expect(event_status).to be_persisted
-      expect(event_status.user).to eq(user)
       expect(event_status.status).to eq('going')
       expect(event_status.id).not_to be_nil
     end
