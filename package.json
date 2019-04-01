@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^5.9.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "prettier": "^1.14.3",

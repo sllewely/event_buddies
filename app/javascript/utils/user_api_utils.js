@@ -1,5 +1,5 @@
-export const fetchEvent = async id => {
-  const fetchResult = fetch(`/api/v1/event/${id}`);
+export const fetchUser = async id => {
+  const fetchResult = fetch(`/api/v1/user/${id}`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -9,8 +9,8 @@ export const fetchEvent = async id => {
   }
 };
 
-export const fetchEvents = async () => {
-  const fetchResult = fetch(`/api/v1/events`);
+export const fetchUsers = async () => {
+  const fetchResult = fetch(`/api/v1/users`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -20,15 +20,15 @@ export const fetchEvents = async () => {
   }
 };
 
-export const postEvent = async event => {
-  const response = await fetch("/api/v1/events", {
+export const createUser = async user => {
+  const response = await fetch("/users", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-type": "application/json",
       "X-CSRF-Token": window.token
     },
-    body: JSON.stringify(event)
+    body: JSON.stringify(user)
   });
   if (response.ok) {
     const jsonData = await response.json();
