@@ -5,10 +5,9 @@ const EventSection = ({ date, events }) => {
   const allEvents = events.map(event => (
     <EventItem event={event} key={event.id} />
   ));
-  debugger;
   return (
-    <div>
-      <h1>{date}</h1>
+    <div className="event__section V_Flex">
+      <h1 className="event__date__header">{date}</h1>
       {allEvents}
     </div>
   );

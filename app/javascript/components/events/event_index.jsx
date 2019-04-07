@@ -22,7 +22,7 @@ class EventsIndex extends React.Component {
     let eventsByDate = {};
     this.props.events.forEach(event => {
       eventsByDate = merge(eventsByDate, {
-        [event.date_time.format("LL")]: { [event.id]: event }
+        [event.date_time.format("dddd, MMMM Do YYYY")]: { [event.id]: event }
       });
     });
     return eventsByDate;
@@ -41,8 +41,7 @@ class EventsIndex extends React.Component {
     // const allEvents = this.props.events.map(event => (
     //   <EventItem event={event} key={event.id} />
     // ));
-    debugger;
-    return allEvents;
+    return <div className="V_Flex">{allEvents}</div>;
   }
 }
 

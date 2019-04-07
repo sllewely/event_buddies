@@ -74,7 +74,7 @@ class EventItem extends React.Component {
           <div className="V_Flex">
             <div className="H_Flex">
               <h1 className="default_text">
-                {event.date_time.format("dddd, MMMM Do YYYY")}
+                {event.date_time.format("h:mm A")}
               </h1>
               <i
                 className="material-icons md-36 md-dark event__item_toggle"
@@ -83,9 +83,6 @@ class EventItem extends React.Component {
                 {this.state.expanded ? "expand_less" : "expand_more"}
               </i>
             </div>
-            <h1 className={`default_text ${visibility}`}>
-              {event.date_time.format("h:mm A")}
-            </h1>
           </div>
         </section>
         <div className="V_Flex">
