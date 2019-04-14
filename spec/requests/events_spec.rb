@@ -39,12 +39,11 @@ RSpec.describe 'Events API', type: :request do
       post '/api/v1/events', params: { name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5' }
 
       response = get '/api/v1/events', as: :json
-      binding.pry
-      5
+      # TODO Verify
     end
 
     it 'gets all of the events I am subscribed to or am the host of' do
-
+      # TODO
     end
   end
 end
