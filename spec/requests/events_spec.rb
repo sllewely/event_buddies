@@ -31,6 +31,13 @@ RSpec.describe 'Events API', type: :request do
     end
 
     it 'gets all of the events I have subscribed to' do
+      event_a = build(:event, name: 'Mini Mansions', date_time: '2018-7-23-21.5')
+      event_b = build(:event, name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5')
+      event_c = build(:event, name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5')
+      build(:user_event_response)
+
+      get '/api/v1/events', as: :json
+      result = JSON.parse(response.body)
 
     end
 

@@ -15,7 +15,7 @@ FactoryBot.define do
 
   factory :event do
     name { 'Yeah Yeah Yeah' }
-    date_time { '2018-7-23-21.5' }
+    date_time { Time.now + 5.day }
   end
 
   factory :event2 do
@@ -31,5 +31,9 @@ FactoryBot.define do
   factory :event4 do
     name { 'Elizabeth Colour Wheel' }
     date_time { '2018-10-25-11.5' }
+  end
+
+  factory :user_event_response do
+    status { :interested }
   end
 end
