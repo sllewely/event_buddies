@@ -22,56 +22,43 @@ RSpec.describe 'Events API', type: :request do
   end
 
   describe 'GET /events' do
-    let(:event1) { create :event }
-    let(:event2) { create :event2 }
-    let(:user2) { create :user2 }
+    let(:event_a) { create(:event, name: 'Mini Mansions') }
+    let(:event_b) { create(:event, name: 'Queens of the Stone Age') }
+    let(:event_c) { create(:event, name: "O'Brother") }
+    let(:event_d) { create(:event, name: 'Planning for a Burial') }
+    let(:event_e) { create(:event, name: 'Queen') }
 
     before do
       sign_in user
-    end
 
-    it 'gets all of the events I have subscribed to' do
-      event_a = create(:event, name: 'Mini Mansions', date_time: '2018-7-23-21.5')
-      event_b = create(:event, name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5')
-      # I am not invited to event_c, so it is not in the response
-      event_c = create(:event, name: 'Queen', date_time: '2018-7-25-21.5')
-      create(:user_event_response, user: user, event: event_a)
+      create(:user_event_response, user: user, event: event_a, host: true)
       create(:user_event_response, user: user, event: event_b)
+      create(:user_event_response, user: user, event: event_d, host: true)
+      create(:user_event_response, user: user, event: event_e)
 
       get '/api/v1/events', as: :json
-      result = JSON.parse(response.body)
+    end
 
-      expect(result.size).to eq(2)
-      expect(result.any? { |r| r['name'] == 'Mini Mansions' }).to be(true)
-      expect(result.any? { |r| r['name'] == 'Queens of the Stone Age' }).to be(true)
+    it 'gets all of the events I have been invited to' do
+      expect(result.any? { |r| r['name'] == event_b.name }).to be(true)
+      expect(result.any? { |r| r['name'] == event_e.name }).to be(true)
     end
 
     it 'gets all of the events I have created' do
-      post '/api/v1/events', params: { name: 'Mini Mansions', date_time: '2018-7-23-21.5' }
-      post '/api/v1/events', params: { name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5' }
-
-      get '/api/v1/events', as: :json
-      result = JSON.parse(response.body)
-
-      expect(result.size).to eq(2)
-      expect(result.any? { |r| r['name'] == 'Mini Mansions' }).to be(true)
-      expect(result.any? { |r| r['name'] == 'Queens of the Stone Age' }).to be(true)
+      expect(result.any? { |r| r['name'] == event_a.name }).to be(true)
+      expect(result.any? { |r| r['name'] == event_d.name }).to be(true)
     end
 
     it 'gets all of the events I am subscribed to or am the host of' do
-      event_a = create(:event, name: 'Mini Mansions', date_time: '2018-7-23-21.5')
-      event_b = create(:event, name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5')
-      # I am not invited to event_c, so it is not in the response
-      event_c = create(:event, name: 'Queen', date_time: '2018-7-25-21.5')
-      create(:user_event_response, user: user, event: event_a, host: true)
-      create(:user_event_response, user: user, event: event_b)
-
-      get '/api/v1/events', as: :json
-      result = JSON.parse(response.body)
-
-      expect(result.size).to eq(2)
-      expect(result.any? { |r| r['name'] == 'Mini Mansions' }).to be(true)
-      expect(result.any? { |r| r['name'] == 'Queens of the Stone Age' }).to be(true)
+      expect(result.size).to eq(4)
     end
+
+    it 'does not get events that I have not been invited to' do
+      expect(result.any? { |r| r['name'] == event_c.name }).to be(false)
+    end
+  end
+
+  def result
+    JSON.parse(response.body)
   end
 end
