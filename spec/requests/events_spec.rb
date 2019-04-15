@@ -38,8 +38,12 @@ RSpec.describe 'Events API', type: :request do
       post '/api/v1/events', params: { name: 'Mini Mansions', date_time: '2018-7-23-21.5' }
       post '/api/v1/events', params: { name: 'Queens of the Stone Age', date_time: '2018-7-25-21.5' }
 
-      response = get '/api/v1/events', as: :json
-      # TODO Verify
+      get '/api/v1/events', as: :json
+      result = JSON.parse(response.body)
+
+      expect(result.size).to eq(2)
+      expect(result.any? { |r| r['name'] == 'Mini Mansions' }).to be(true)
+      expect(result.any? { |r| r['name'] == 'Queens of the Stone Age' }).to be(true)
     end
 
     it 'gets all of the events I am subscribed to or am the host of' do
