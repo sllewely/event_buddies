@@ -1,5 +1,10 @@
 class Event < ApplicationRecord
-  belongs_to :creator, class_name: 'User'
   has_many :user_event_responses
-  has_many :users, through: :event_statuses
+  has_many :users, through: :user_event_responses
+
+  # Get the hosts for the event
+  def hosts
+    users.merge(UserEventResponse.hosting)
+  end
+
 end
