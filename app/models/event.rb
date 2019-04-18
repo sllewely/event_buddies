@@ -4,7 +4,7 @@ class Event < ApplicationRecord
 
   # Get the hosts for the event
   def hosts
-    users.where(user_event_responses: { host: true })
+    users.merge(UserEventResponse.hosting)
   end
 
 end
