@@ -8,16 +8,29 @@ RSpec.describe 'Events API', type: :request do
 
     before do
       sign_in user
-      post '/api/v1/events', params: params, as: :json
     end
 
     it 'creates an event' do
+      post '/api/v1/events', params: params, as: :json
+
       event = Event.find_by(name: params[:name])
 
       expect(event).to be_persisted
       expect(event.id).not_to be_nil
       expect(event.users).to match_array([user])
       expect(event.hosts).to match_array([user])
+    end
+
+    xit 'creating an event fails if name is missing' do
+      post '/api/v1/events', params: { date_time: Time.now + 5.days }, as: :json
+
+      # verify user_event_response is not created too
+    end
+
+    xit 'creating an event fails if date is missing' do
+      post '/api/v1/events', params: { name: 'Date Missing Event' }, as: :json
+
+      # verify user_event_response is not created too
     end
   end
 
