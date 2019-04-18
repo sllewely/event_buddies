@@ -32,9 +32,16 @@ RSpec.describe 'User Event Responses API', type: :request do
     end
 
     it 'fails if the event does not exist' do
-      fake_uuid = '00000000-0000-0000-0000-000000000000';
+      fake_uuid = '00000000-0000-0000-0000-000000000000'
       response = post "/api/v1/events/#{fake_uuid}/user_event_responses", params: { status: 'going' }
       expect(response).to eq(404)
+    end
+
+    it 'fails if the status is not valid' do
+      post "/api/v1/events/#{event.id}/user_event_responses", params: { status: 'lolol' }
+
+      expect(response.status).to eq(422)
+      expect(UserEventResponse.where(status: 'lolol').exists?).to be(false)
     end
   end
 end
