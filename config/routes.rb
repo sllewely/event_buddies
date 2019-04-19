@@ -11,8 +11,7 @@ Rails.application.routes.draw do
 
       resources :friendship_requests, only: [:index, :create] do
         member do
-          post 'confirm'
-          post 'reject'
+          post 'confirm', 'reject'
         end
       end
     end
