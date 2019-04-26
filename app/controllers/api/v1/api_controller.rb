@@ -3,5 +3,5 @@ class API::V1::APIController < ActionController::API
   include Response
   include ExceptionHandler
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 end
