@@ -1,17 +1,33 @@
 import React from "react";
-import { Route, redirect, Switch, Link, HashRouter } from "react-router-dom";
-import EventForm from "./events/event_form";
-import EventIndex from "./events/event_index";
-import Header from "./header";
+import { Switch } from "react-router-dom";
+import Router from "./router";
+import LoginForm from "./session/login_form";
+import SignupForm from "./users/signup_form";
+import { AuthRoute, ConRoute } from "../utils/route_utils";
 
+// TODO: I am doing this now to be able to work on protected routes before they can be accessed,
+// TODO: once they're ready comment in the bottom one and delete the top
 const App = () => (
   <main>
-    <Header />
     <Switch>
-      <Route exact path="/events/new" component={EventForm} />
-      <Route path="/" component={EventIndex} />
+      <Router />
     </Switch>
   </main>
 );
+
+// const App = () => (
+//   <main>
+//     <Switch>
+//       <AuthRoute exact path="/login" component={LoginForm} />
+//       <AuthRoute exact path="/signup" component={SignupForm} />
+//       <ConRoute
+//         path="/"
+//         conditional={loggedStatus => loggedStatus}
+//         FalseComp={LoginForm}
+//         TrueComp={Router}
+//       />
+//     </Switch>
+//   </main>
+// );
 
 export default App;

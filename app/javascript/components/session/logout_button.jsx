@@ -10,9 +10,11 @@ class LogoutButton extends React.Component {
 
   render() {
     return (
-      <h1 className="logout_button" onClick={this.props.logout}>
-        logout
-      </h1>
+      <div className="logout_button" onClick={this.props.logout}>
+        <i className="material-icons md-48" title="logout">
+          eject
+        </i>
+      </div>
     );
   }
 }

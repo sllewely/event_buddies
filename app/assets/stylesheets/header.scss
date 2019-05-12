@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.header__title {
+  font-size: 24px;
+}
+
 .header_desc {
   font-family: "Roboto", sans-serif;
 }
@@ -33,4 +37,29 @@
 }
 .header__new_event:hover {
   background-color: #8bd8d8;
+}
+
+.H_Flex_header {
+  padding-top: 15px;
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header__left,
+.header__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logout_button:hover {
+  cursor: pointer;
+}
+
+.border_line {
+  padding-top: 15px;
+  margin-bottom: 10px;
+  width: 1300px;
+  border-bottom: 1px solid black;
 }
