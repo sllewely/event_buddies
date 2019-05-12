@@ -8,8 +8,14 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      utf8: "✓",
+      authenticity_token: window.token,
+      user: {
+        email: "harry.appler@gmail.com",
+        password: "starwars",
+        remember_me: "0"
+      },
+      commit: "Log in"
     };
   }
 
@@ -37,9 +43,9 @@ class LoginForm extends React.Component {
           <input
             className="auth-field"
             type="text"
-            onChange={this.update("username")}
+            onChange={this.update("email")}
             placeholder="Username"
-            value={this.state.username}
+            value={this.state.email}
           />
           <input
             className="auth-field"
