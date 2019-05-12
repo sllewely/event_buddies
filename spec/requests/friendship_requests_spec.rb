@@ -9,8 +9,17 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
   end
 
   describe 'POST /friendship_requests/' do
-    xit 'creates a new friendship request with the given user' do
-      post "/api/v1/friendship_requests", params: { format: :json }
+    it 'creates a new friendship request with the given user' do
+      post "/api/v1/friendship_requests", params: { pending_friend_id: user2.id }, as: :json
+
+      friendship_request = FriendshipRequest.first
+      expect(friendship_request.user_id).to eq(user.id)
+      expect(friendship_request.pending_friend_id).to eq(user2.id)
+
+      
+      binding.pry
+      5
+
     end
   end
 
