@@ -69,6 +69,24 @@ RSpec.describe 'Events API', type: :request do
     it 'does not get events that I have not been invited to' do
       expect(result.any? { |r| r['name'] == event_c.name }).to be(false)
     end
+
+    it 'paginates' do
+      50.times do
+        new_event = create(:event)
+        create(:user_event_response, user: user, event: new_event)
+      end
+
+      get '/api/v1/events', as: :json
+
+      page_1 = result
+      expect(page_1.count).to eq(25)
+
+      get '/api/v1/events', params: { page: 2 }, as: :json
+
+      page_2 = result
+
+      expect(page_2.count).to eq(25)
+    end
   end
 
   def result
