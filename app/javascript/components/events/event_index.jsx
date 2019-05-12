@@ -5,7 +5,7 @@ import { fetchEvents } from "../../actions/event_actions.js";
 import { merge } from "lodash";
 import EventSection from "./event_section";
 import * as moment from "moment";
-import { spawnSync } from "child_process";
+// import { spawnSync } from "child_process";
 
 class EventsIndex extends React.Component {
   constructor(props) {
@@ -52,12 +52,9 @@ class EventsIndex extends React.Component {
       return [date, Object.values(eventsByDate[date])];
     });
 
-    const allEvents = dateEventsTuple.map(tuple => (
-      <EventSection date={tuple[0]} events={tuple[1]} />
+    const allEvents = dateEventsTuple.map((tuple, idx) => (
+      <EventSection date={tuple[0]} events={tuple[1]} key={idx} />
     ));
-    // const allEvents = this.props.events.map(event => (
-    //   <EventItem event={event} key={event.id} />
-    // ));
     return <div className="V_Flex">{allEvents}</div>;
   }
 }
