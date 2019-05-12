@@ -5,7 +5,6 @@ import { fetchEvents } from "../../actions/event_actions.js";
 import { merge } from "lodash";
 import EventSection from "./event_section";
 import * as moment from "moment";
-// import { spawnSync } from "child_process";
 
 class EventsIndex extends React.Component {
   constructor(props) {
