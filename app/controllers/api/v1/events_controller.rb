@@ -1,6 +1,8 @@
 class API::V1::EventsController < API::V1::APIController
+
+  # @param page - the next page of events to request
   def index
-    @events = current_user.events
+    @events = current_user.events.page(params[:page].to_i || 1)
     json_response(@events)
   end
 
