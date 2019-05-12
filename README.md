@@ -26,6 +26,12 @@ gem install bundle
 bundle install
 ```
 
+Obtain two credential files from one of the team members
+```
+config/credentials.yml.enc
+config/master.key
+```
+
 ```
 brew upgrade yarn
 yarn install
