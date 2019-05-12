@@ -4,14 +4,16 @@ import EventItem from "./event_item";
 import { fetchEvents } from "../../actions/event_actions.js";
 import { merge } from "lodash";
 import EventSection from "./event_section";
+import EventEnd from "./event_end";
 import * as moment from "moment";
 
 class EventsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isloading: false,
-      pageNumber: 1
+      isLoading: false,
+      pageNumber: 1,
+      pageEnd: false
     };
     window.onscroll = () => {
       if (
@@ -28,14 +30,20 @@ class EventsIndex extends React.Component {
   }
 
   fetchOffsetEvents(page) {
-    if (this.state.isLoading) return;
+    if (this.state.isLoading || this.state.pageEnd) return;
+
     this.setState({ isLoading: true });
-    this.props
-      .fetchEvents(page)
-      .then(
-        this.setState({ isLoading: false, pageNumber: page }),
-        this.setState({ isLoading: false })
-      );
+    this.props.fetchEvents(page).then(
+      result => {
+        let newState;
+        if (result.payload.length < 25) {
+          newState = { pageEnd: true };
+        }
+        newState = merge(newState, { isLoading: false, pageNumber: page });
+        this.setState(newState);
+      },
+      () => this.setState({ isLoading: false })
+    );
   }
 
   // TODO: find all dates of events
@@ -53,6 +61,7 @@ class EventsIndex extends React.Component {
   render() {
     const eventsByDate = this.findAllDates();
     const dates = Object.keys(eventsByDate);
+    const pageEnd = this.state.pageEnd ? <EventEnd /> : <h1>More loading</h1>;
     const dateEventsTuple = dates.map(date => {
       return [date, Object.values(eventsByDate[date])];
     });
@@ -60,7 +69,12 @@ class EventsIndex extends React.Component {
     const allEvents = dateEventsTuple.map((tuple, idx) => (
       <EventSection date={tuple[0]} events={tuple[1]} key={idx} />
     ));
-    return <div className="V_Flex">{allEvents}</div>;
+    return (
+      <div className="V_Flex">
+        {allEvents}
+        {pageEnd}
+      </div>
+    );
   }
 }
 

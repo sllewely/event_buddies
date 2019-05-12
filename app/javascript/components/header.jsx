@@ -2,6 +2,7 @@ import React from "react";
 import EventsIndex from "./events/event_index";
 import { Link } from "react-router-dom";
 import LogoutButton from "./session/logout_button";
+import NewEventButton from "./events/utilities/new_event_button";
 
 const Header = props => {
   return (
@@ -29,11 +30,7 @@ const Header = props => {
           </div>
         </div>
         <div className="border_line" />
-        <Link className="header__new_event" to="/events/new">
-          {" "}
-          <h1 className="default_text">Post a Show</h1>
-          <i className="material-icons">add</i>
-        </Link>
+        <NewEventButton />
       </header>
     </div>
   );
