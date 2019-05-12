@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_180250) do
+ActiveRecord::Schema.define(version: 2019_05_12_201011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_03_31_180250) do
   create_table "friendship_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "pending_friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["pending_friend_id"], name: "index_friendship_requests_on_pending_friend_id"
     t.index ["user_id"], name: "index_friendship_requests_on_user_id"
   end
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_03_31_180250) do
   create_table "friendships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
