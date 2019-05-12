@@ -35,58 +35,91 @@ RSpec.describe 'Events API', type: :request do
   end
 
   describe 'GET /events' do
-    let(:event_a) { create(:event, name: 'Mini Mansions') }
-    let(:event_b) { create(:event, name: 'Queens of the Stone Age') }
-    let(:event_c) { create(:event, name: "O'Brother") }
-    let(:event_d) { create(:event, name: 'Planning for a Burial') }
-    let(:event_e) { create(:event, name: 'Queen') }
+    context do
+      let(:event_a) { create(:event, name: 'Mini Mansions') }
+      let(:event_b) { create(:event, name: 'Queens of the Stone Age') }
+      let(:event_c) { create(:event, name: "O'Brother") }
+      let(:event_d) { create(:event, name: 'Planning for a Burial') }
+      let(:event_e) { create(:event, name: 'Queen') }
 
-    before do
-      sign_in user
+      before do
+        sign_in user
 
-      create(:user_event_response, user: user, event: event_a, host: true)
-      create(:user_event_response, user: user, event: event_b)
-      create(:user_event_response, user: user, event: event_d, host: true)
-      create(:user_event_response, user: user, event: event_e)
+        create(:user_event_response, user: user, event: event_a, host: true)
+        create(:user_event_response, user: user, event: event_b)
+        create(:user_event_response, user: user, event: event_d, host: true)
+        create(:user_event_response, user: user, event: event_e)
 
-      get '/api/v1/events', as: :json
-    end
-
-    it 'gets all of the events I have been invited to' do
-      expect(result.any? { |r| r['name'] == event_b.name }).to be(true)
-      expect(result.any? { |r| r['name'] == event_e.name }).to be(true)
-    end
-
-    it 'gets all of the events I have created' do
-      expect(result.any? { |r| r['name'] == event_a.name }).to be(true)
-      expect(result.any? { |r| r['name'] == event_d.name }).to be(true)
-    end
-
-    it 'gets all of the events I am subscribed to or am the host of' do
-      expect(result.size).to eq(4)
-    end
-
-    it 'does not get events that I have not been invited to' do
-      expect(result.any? { |r| r['name'] == event_c.name }).to be(false)
-    end
-
-    it 'paginates' do
-      50.times do
-        new_event = create(:event)
-        create(:user_event_response, user: user, event: new_event)
+        get '/api/v1/events', as: :json
       end
 
-      get '/api/v1/events', as: :json
+      it 'gets all of the events I have been invited to' do
+        expect(result.any? { |r| r['name'] == event_b.name }).to be(true)
+        expect(result.any? { |r| r['name'] == event_e.name }).to be(true)
+      end
 
-      page_1 = result
-      expect(page_1.count).to eq(25)
+      it 'gets all of the events I have created' do
+        expect(result.any? { |r| r['name'] == event_a.name }).to be(true)
+        expect(result.any? { |r| r['name'] == event_d.name }).to be(true)
+      end
 
-      get '/api/v1/events', params: { page: 2 }, as: :json
+      it 'gets all of the events I am subscribed to or am the host of' do
+        expect(result.size).to eq(4)
+      end
 
-      page_2 = result
+      it 'does not get events that I have not been invited to' do
+        expect(result.any? { |r| r['name'] == event_c.name }).to be(false)
+      end
+      
+      it 'paginates' do
+        50.times do
+          new_event = create(:event)
+          create(:user_event_response, user: user, event: new_event)
+        end
 
-      expect(page_2.count).to eq(25)
+        get '/api/v1/events', as: :json
+
+        page_1 = result
+        expect(page_1.count).to eq(25)
+
+        get '/api/v1/events', params: { page: 2 }, as: :json
+
+        page_2 = result
+
+        expect(page_2.count).to eq(25)
+      end
     end
+
+    context 'ordering' do
+      let(:event_a) { create(:event, name: 'Mini Mansions', date_time: DateTime.now + 1) }
+      let(:event_b) { create(:event, name: 'Queens of the Stone Age', date_time: DateTime.now) }
+      let(:event_c) { create(:event, name: "O'Brother", date_time: DateTime.now - 5) }
+      let(:event_d) { create(:event, name: 'Planning for a Burial', date_time: DateTime.now + 10) }
+      let(:event_e) { create(:event, name: 'Queen', date_time: DateTime.now + 3) }
+
+      before do
+        sign_in user
+
+        create(:user_event_response, user: user, event: event_a)
+        create(:user_event_response, user: user, event: event_b)
+        create(:user_event_response, user: user, event: event_c)
+        create(:user_event_response, user: user, event: event_d)
+        create(:user_event_response, user: user, event: event_e)
+
+        get '/api/v1/events', as: :json
+      end
+
+      it 'get events in the right order' do
+        expect(result[0]['name']).to eq('Queens of the Stone Age')
+        expect(result[1]['name']).to eq('Mini Mansions')
+        expect(result[2]['name']).to eq('Queen')
+        expect(result[3]['name']).to eq('Planning for a Burial')
+
+        # In the past
+        expect(result.any? { |e| e['name'] == "O'Brother" }).to be(false)
+      end
+    end
+
   end
 
   def result
