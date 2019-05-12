@@ -29,9 +29,13 @@ class EventsIndex extends React.Component {
 
   fetchOffsetEvents(page) {
     if (this.state.isLoading) return;
+    this.setState({ isLoading: true });
     this.props
       .fetchEvents(page)
-      .then(this.setState({ isLoading: false, pageNumber: page }));
+      .then(
+        this.setState({ isLoading: false, pageNumber: page }),
+        this.setState({ isLoading: false })
+      );
   }
 
   // TODO: find all dates of events
