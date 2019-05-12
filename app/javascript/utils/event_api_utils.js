@@ -9,8 +9,8 @@ export const fetchEvent = async id => {
   }
 };
 
-export const fetchEvents = async () => {
-  const fetchResult = fetch(`/api/v1/events`);
+export const fetchEvents = async page => {
+  const fetchResult = fetch(`/api/v1/events?page=${page}`);
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();

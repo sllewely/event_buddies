@@ -12,25 +12,25 @@ class EventsIndex extends React.Component {
     super(props);
     this.state = {
       isloading: false,
-      eventCount: 0
+      pageNumber: 1
     };
     window.onscroll = () => {
       if (
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight
       ) {
-        this.fetchOffsetEvents();
+        this.fetchOffsetEvents(this.state.pageNumber + 1);
       }
     };
   }
 
   componentDidMount() {
-    this.fetchOffsetEvents();
+    this.fetchOffsetEvents(this.state.pageNumber);
   }
 
-  fetchOffsetEvents() {
+  fetchOffsetEvents(page) {
     if (this.state.isLoading) return;
-    this.props.fetchEvents().then(this.setState({ isLoading: false }));
+    this.props.fetchEvents(page).then(this.setState({ isLoading: false }));
   }
 
   // TODO: find all dates of events
@@ -72,7 +72,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    fetchEvents: () => dispatch(fetchEvents())
+    fetchEvents: page => dispatch(fetchEvents(page))
   };
 };
 
