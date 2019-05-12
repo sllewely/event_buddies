@@ -16,7 +16,7 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
       expect(friendship_request.user_id).to eq(user.id)
       expect(friendship_request.pending_friend_id).to eq(user2.id)
 
-      
+
       binding.pry
       5
 
