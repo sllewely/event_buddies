@@ -14,8 +14,14 @@ class EventsIndex extends React.Component {
       isloading: false,
       eventCount: 0
     };
-    this.setOnScrollListener();
-    this.fetchOffsetEvents.bind(this);
+    window.onscroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        this.fetchOffsetEvents();
+      }
+    };
   }
 
   componentDidMount() {
@@ -25,8 +31,6 @@ class EventsIndex extends React.Component {
   fetchOffsetEvents() {
     if (this.state.isLoading) return;
     this.props.fetchEvents().then(this.setState({ isLoading: false }));
-
-    console.log("hello from the scroll!");
   }
 
   // TODO: find all dates of events
@@ -39,17 +43,6 @@ class EventsIndex extends React.Component {
       });
     });
     return eventsByDate;
-  }
-
-  setOnScrollListener() {
-    window.onscroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight
-      ) {
-        fetchOffsetEvents();
-      }
-    };
   }
 
   render() {
