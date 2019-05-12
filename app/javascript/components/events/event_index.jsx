@@ -5,15 +5,28 @@ import { fetchEvents } from "../../actions/event_actions.js";
 import { merge } from "lodash";
 import EventSection from "./event_section";
 import * as moment from "moment";
+import { spawnSync } from "child_process";
 
 class EventsIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isloading: false,
+      eventCount: 0
+    };
+    this.setOnScrollListener();
+    this.fetchOffsetEvents.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.fetchOffsetEvents();
+  }
+
+  fetchOffsetEvents() {
+    if (this.state.isLoading) return;
+    this.props.fetchEvents().then(this.setState({ isLoading: false }));
+
+    console.log("hello from the scroll!");
   }
 
   // TODO: find all dates of events
@@ -26,6 +39,17 @@ class EventsIndex extends React.Component {
       });
     });
     return eventsByDate;
+  }
+
+  setOnScrollListener() {
+    window.onscroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        fetchOffsetEvents();
+      }
+    };
   }
 
   render() {
