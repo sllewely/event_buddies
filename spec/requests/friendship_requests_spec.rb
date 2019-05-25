@@ -31,8 +31,17 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
   end
 
   describe 'GET /friendship_requests/' do
-    xit 'gets all pending friendship requests' do
-      get '/api/v1/friendship_requests', params: { format: :json }
+    let(:friendship_request) { FriendshipRequest.create(requesting_friend: user2, pending_friend: user) }
+
+    before do
+      friendship_request
+    end
+
+    it 'gets all pending friendship requests' do
+      get '/api/v1/friendship_requests', as: :json
+
+      expect(result.first['pending_friend_id']).to eq(user.id)
+      expect(result.first['requesting_friend_id']).to eq(user2.id)
     end
   end
 
@@ -46,5 +55,9 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
     xit 'rejects the given friendship request' do
       post "/api/v1/friendship_requests/#{user2.id}/reject"
     end
+  end
+
+  def result
+    JSON.parse(response.body)
   end
 end
