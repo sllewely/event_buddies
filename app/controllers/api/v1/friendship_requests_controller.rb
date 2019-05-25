@@ -19,6 +19,10 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
     current_user.requesting_friendship_requests.find_by(requesting_friend_id: params['id']).destroy
   end
 
+  def is_pending
+
+  end
+
   private
 
   def pending_friend
