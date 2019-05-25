@@ -41,13 +41,13 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
     end
   end
 
-  describe 'POST /friendship_requests/:uuid/confrim' do
+  describe 'POST /friendship_requests/:id/confirm' do
     xit 'accepts the given friendship request and creates a friendship relation' do
       post "/api/v1/friendship_requests/#{user2.id}/confirm"
     end
   end
 
-  describe 'POST /friendship_requests/:uuid/reject' do
+  describe 'POST /friendship_requests/:id/reject' do
     it 'rejects the given friendship request' do
       FriendshipRequest.create(requesting_friend: user2, pending_friend: user)
       expect(user.requesting_friends).to include(user2)
@@ -55,6 +55,22 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
       post "/api/v1/friendship_requests/#{user2.id}/reject"
 
       expect(user.requesting_friends).to_not include(user2)
+    end
+  end
+
+  describe 'GET /friendship_requests/:id/is_pending' do
+    it 'returns true if there is a pending friend request sent to the given user' do
+      FriendshipRequest.create(requesting_friend: user2, pending_friend: user)
+
+      get "/api/v1/friendship_requests/#{user2.id}/is_pending"
+
+      expect(result).to be_truthy
+    end
+
+    it 'returns false if there is not a pending friend request sent to the given user' do
+      get "/api/v1/friendship_requests/#{user2.id}/is_pending"
+
+      expect(result).to be_falsey
     end
   end
 
