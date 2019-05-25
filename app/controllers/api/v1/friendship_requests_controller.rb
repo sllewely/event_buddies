@@ -1,7 +1,7 @@
 class API::V1::FriendshipRequestsController < API::V1::APIController
 
   def index
-    json_response('not implemented')
+    json_response(current_user.requesting_friendship_requests.include(:requesting_friends))
   end
 
   def create
