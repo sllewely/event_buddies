@@ -52,8 +52,18 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
   end
 
   describe 'POST /friendship_requests/:uuid/reject' do
-    xit 'rejects the given friendship request' do
+    let(:friendship_request) { FriendshipRequest.create(requesting_friend: user2, pending_friend: user) }
+
+    before do
+      friendship_request
+    end
+
+    it 'rejects the given friendship request' do
+      expect(user.requesting_friends).to include(user2)
+
       post "/api/v1/friendship_requests/#{user2.id}/reject"
+
+      expect(user.requesting_friends).to_not include(user2)
     end
   end
 

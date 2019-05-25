@@ -14,9 +14,9 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
     json_response('not implemented')
   end
 
-  # @param requesting_friend_id the friend request to delete
+  # @param []requesting_friend_id] - the friend request to delete
   def reject
-    current_user.requesting_friendship_requests.find(requesting_friend_id: params['requesting_friend_id']).destroy
+    current_user.requesting_friendship_requests.find_by(requesting_friend_id: params['id']).destroy
   end
 
   private
