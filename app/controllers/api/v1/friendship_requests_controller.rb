@@ -5,7 +5,7 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
   end
 
   def create
-    current_user.friendship_requests.create!(pending_friend: pending_friend)
+    current_user.pending_friendship_requests.create!(pending_friend: pending_friend)
   end
 
   def confirm
