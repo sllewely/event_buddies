@@ -1,10 +1,11 @@
 class API::V1::FriendshipRequestsController < API::V1::APIController
 
+  # @return [requesting_friendship_requests] - the incoming friend requests for the current user
   def index
     json_response(current_user.requesting_friendship_requests.includes(:requesting_friend))
   end
 
-  # @param pending_friend_id the friend to create a friend request for
+  # @param [pending_friend_id] - the friend to create a friend request for
   def create
     current_user.pending_friendship_requests.create!(pending_friend: pending_friend)
   end
