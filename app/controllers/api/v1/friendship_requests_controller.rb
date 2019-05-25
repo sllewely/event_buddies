@@ -21,8 +21,4 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
   def pending_friend
     User.find(params[:pending_friend_id])
   end
-
-  def friendship_request_params
-    params.permit()
-  end
 end
