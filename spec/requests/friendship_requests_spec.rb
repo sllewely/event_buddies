@@ -16,10 +16,17 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
       expect(friendship_request.requesting_friend_id).to eq(user.id)
       expect(friendship_request.pending_friend_id).to eq(user2.id)
 
+      # verify requesting friend associations
+      expect(user.pending_friends).to eq([user2])
+      expect(user.pending_friendship_requests).to eq([friendship_request])
+      expect(user.requesting_friends).to eq([])
+      expect(user.requesting_friendship_requests).to eq([])
 
-      binding.pry
-      5
-
+      # verify pending (receiving) friend associations
+      expect(user2.pending_friends).to eq([])
+      expect(user2.pending_friendship_requests).to eq([])
+      expect(user2.requesting_friends).to eq([user])
+      expect(user2.requesting_friendship_requests).to eq([friendship_request])
     end
   end
 
