@@ -20,7 +20,7 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
   end
 
   def is_pending
-
+    json_response(current_user.requesting_friendship_requests.where(requesting_friend_id: params['id']).exists?)
   end
 
   private
