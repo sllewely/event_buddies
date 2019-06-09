@@ -17,7 +17,7 @@ class EventsIndex extends React.Component {
     };
     window.onscroll = () => {
       if (
-        window.innerHeight + document.documentElement.scrollTop ===
+        window.innerHeight + document.documentElement.scrollTop + 500 >=
         document.documentElement.offsetHeight
       ) {
         this.fetchOffsetEvents(this.state.pageNumber + 1);
@@ -45,8 +45,6 @@ class EventsIndex extends React.Component {
       () => this.setState({ isLoading: false })
     );
   }
-
-  // TODO: find all dates of events
 
   findAllDates() {
     let eventsByDate = {};
