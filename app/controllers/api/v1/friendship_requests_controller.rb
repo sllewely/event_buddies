@@ -5,7 +5,7 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
   end
 
   def create
-    json_response('not implemented')
+    current_user.pending_friendship_requests.create!(pending_friend: pending_friend)
   end
 
   def confirm
@@ -14,5 +14,11 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
 
   def reject
     json_response('not implemented')
+  end
+
+  private
+
+  def pending_friend
+    User.find(params[:pending_friend_id])
   end
 end
