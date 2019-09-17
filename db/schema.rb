@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 2019_05_25_183049) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
+  create_table "jwt_blacklists", force: :cascade do |t|
+    t.string "jti", null: false
+    t.index ["jti"], name: "index_jwt_blacklists_on_jti"
+  end
+
   create_table "user_event_responses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
     t.uuid "user_id", null: false
