@@ -64,7 +64,7 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
 
       get "/api/v1/friendship_requests/#{user2.id}/is_pending"
 
-      expect(result).to be_truthy
+      expect(result).to eq(true)
     end
 
     it 'returns false if there is not a pending friend request sent to the given user' do
