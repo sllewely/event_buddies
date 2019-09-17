@@ -15,6 +15,10 @@ module RequestSpecHelper
     logout(warden_scope(resource))
   end
 
+  def result
+    JSON.parse(response.body)
+  end
+
   private
 
   def warden_scope(resource)

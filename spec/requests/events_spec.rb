@@ -121,8 +121,4 @@ RSpec.describe 'Events API', type: :request do
     end
 
   end
-
-  def result
-    JSON.parse(response.body)
-  end
 end
