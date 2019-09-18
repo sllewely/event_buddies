@@ -15,7 +15,7 @@ RSpec.describe 'Authentication', type: :request do
     context 'valid credentials' do
       before { post url, params: params }
 
-      specify { expect(response).to be_success }
+      specify { expect(response.status).to eq(200) }
       specify { expect(response.headers['Authorization']).to be_present }
 
       it 'returns valid JWT token' do
