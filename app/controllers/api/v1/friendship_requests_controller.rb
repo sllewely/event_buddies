@@ -19,10 +19,6 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
     current_user.requesting_friendship_requests.find_by(requesting_friend_id: params['id']).destroy
   end
 
-  def is_pending
-    json_response(current_user.requesting_friendship_requests.where(requesting_friend_id: params['id']).exists?)
-  end
-
   private
 
   def pending_friend

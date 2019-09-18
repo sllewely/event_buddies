@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       resources :friendship_requests, only: [:index, :create] do
         member do
           post 'confirm', 'reject'
-          get 'is_pending'
         end
       end
     end
