@@ -11,8 +11,8 @@ The goal is to be able to broadcast events to tailored groups of people, without
 
 ## Technologies Used
 
-Ruby version 2.5.1
-Rails version 5.2.0
+Ruby version 2.6.4
+Rails version 6.0.0
 
 ## Install
 
@@ -20,8 +20,8 @@ Get Ruby version
 
 ```
 brew update && brew upgrade ruby-build
-rbenv install 2.5.1
-rbenv local 2.5.1
+rbenv install 2.6.4
+rbenv local 2.6.4
 gem install bundle
 bundle install
 ```

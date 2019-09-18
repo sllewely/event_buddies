@@ -15,7 +15,7 @@ RSpec.describe 'Registration', type: :request do
         { user: { email: 'user@example.com', password: 'password' } }
       end
 
-      specify { expect(response).to be_success }
+      specify { expect(response.status).to eq(200) }
       specify { expect(User.where(email: 'user@example.com').exists?).to eq true }
     end
 
