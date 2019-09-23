@@ -12,7 +12,7 @@ RSpec.describe 'Registration', type: :request do
 
     context 'user does not exist' do
       let(:params) do
-        { user: { email: 'user@example.com', password: 'password' } }
+        { user: { email: 'user@example.com', password: 'password', first_name: 'bob', last_name: 'saidso' } }
       end
 
       specify { expect(response.status).to eq(200) }
@@ -22,7 +22,7 @@ RSpec.describe 'Registration', type: :request do
     context 'existing user' do
       let(:user) { create :user }
       let(:params) do
-        { user: { email: user.email, password: 'password' } }
+        { user: { email: user.email, password: 'password', first_name: 'bob', last_name: 'saidso' } }
       end
 
       specify { expect(response.status).to eq 400 }
