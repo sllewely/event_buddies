@@ -5,16 +5,6 @@ import LoginForm from "./session/login_form";
 import SignupForm from "./users/signup_form";
 import { AuthRoute, ConRoute } from "../utils/route_utils";
 
-// TODO: I am doing this now to be able to work on protected routes before they can be accessed,
-// TODO: once they're ready comment in the bottom one and delete the top
-// const App = () => (
-//   <main>
-//     <Switch>
-//       <Router />
-//     </Switch>
-//   </main>
-// );
-
 const App = () => (
   <main>
     <Switch>
