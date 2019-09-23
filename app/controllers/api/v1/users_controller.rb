@@ -1,10 +1,9 @@
 class API::V1::UsersController < API::V1::APIController
 
   def show
-    if (params[:id] == current_user.id)
-      return json_response(User.select(User::PUBLIC_FIELDS + [:email]).find(params[:id]))
-    end
+    selected_fields = User::PUBLIC_FIELDS
+    selected_fields += [:email] if params[:id] == current_user.id
 
-    json_response(User.select(*User::PUBLIC_FIELDS).find(params[:id]))
+    json_response(User.select(selected_fields).find(params[:id]))
   end
 end
