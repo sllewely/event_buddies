@@ -8,6 +8,9 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      friendInvite: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       passwordMatch: "",
@@ -60,6 +63,27 @@ class SignupForm extends React.Component {
             </li>
           ))}
           {errors}
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("friendInvite")}
+            placeholder="Friend Code"
+            value={this.state.friendInvite}
+          />
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("firstName")}
+            placeholder="First Name"
+            value={this.state.firstName}
+          />
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("lastName")}
+            placeholder="Last Name"
+            value={this.state.LastName}
+          />
           <input
             className="auth-field"
             type="text"
