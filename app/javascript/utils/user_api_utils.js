@@ -1,5 +1,12 @@
 export const fetchUser = async id => {
-  const fetchResult = fetch(`/api/v1/user/${id}`);
+  const fetchResult = fetch(`/api/v1/user/${id}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -10,7 +17,14 @@ export const fetchUser = async id => {
 };
 
 export const fetchUsers = async () => {
-  const fetchResult = fetch(`/api/v1/users`);
+  const fetchResult = fetch(`/api/v1/users`, {
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -21,7 +35,7 @@ export const fetchUsers = async () => {
 };
 
 export const createUser = async user => {
-  const response = await fetch("/users", {
+  const response = await fetch("/signup", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -32,6 +46,7 @@ export const createUser = async user => {
   });
   if (response.ok) {
     const jsonData = await response.json();
+    window.jwt = response.headers.get("authorization");
     return jsonData;
   } else {
     throw Error(response.statusText);
