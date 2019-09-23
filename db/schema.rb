@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_183049) do
+ActiveRecord::Schema.define(version: 2019_05_25_203456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_183049) do
     t.uuid "pending_friend_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["pending_friend_id", "requesting_friend_id"], name: "index_unique_friendship_requests", unique: true
     t.index ["pending_friend_id"], name: "index_friendship_requests_on_pending_friend_id"
     t.index ["requesting_friend_id"], name: "index_friendship_requests_on_requesting_friend_id"
   end
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_183049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_unique_friendships", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
