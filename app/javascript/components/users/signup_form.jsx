@@ -33,7 +33,7 @@ class SignupForm extends React.Component {
         user: {
           // friendInvite: this.state.friendInvite,
           first_name: this.state.firstName,
-          last_name: this.state.lgotastName,
+          last_name: this.state.lastName,
           email: this.state.email,
           password: this.state.password
         }
