@@ -16,9 +16,9 @@ RSpec.describe 'Registration', type: :request do
       end
 
       specify { expect(response.status).to eq(200) }
-      specify { expect(User.where(email: 'user@example.com').exists?).to eq true }
-      specify { expect(User.where(first_name: 'bob').exists?).to eq true }
-      specify { expect(User.where(last_name: 'saidso').exists?).to eq true }
+      specify do
+        expect(User.where(email: 'user@example.com', first_name: 'bob', last_name: 'saidso').exists?).to eq true
+      end
     end
 
     context 'existing user' do
