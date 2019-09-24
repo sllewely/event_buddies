@@ -1,0 +1,6 @@
+class API::V1::UsersController < API::V1::APIController
+
+  def show
+    json_response(User.find(params[:id]))
+  end
+end
