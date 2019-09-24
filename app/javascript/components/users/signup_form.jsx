@@ -31,6 +31,9 @@ class SignupForm extends React.Component {
     if (this.state.password === this.state.passwordMatch) {
       const user = {
         user: {
+          // friendInvite: this.state.friendInvite,
+          first_name: this.state.firstName,
+          last_name: this.state.lgotastName,
           email: this.state.email,
           password: this.state.password
         }
@@ -82,7 +85,7 @@ class SignupForm extends React.Component {
             type="text"
             onChange={this.update("lastName")}
             placeholder="Last Name"
-            value={this.state.LastName}
+            value={this.state.lastName}
           />
           <input
             className="auth-field"
