@@ -1,5 +1,6 @@
 class API::V1::UserEventResponsesController < API::V1::APIController
 
+  # @param status - the rsvp status
   def create
     status = current_user.user_event_responses.find_or_initialize_by(event_id: event.id)
     if status.update(status_params)
