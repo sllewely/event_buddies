@@ -57,9 +57,11 @@ class SignupForm extends React.Component {
     const errors = this.state.errors ? <h3>{this.state.errors}</h3> : null;
     return (
       <div className="auth-form-container">
-        <h1 className="auth-form-title">Concert Buddies</h1>
+        <h1 className="auth-form-title">
+          Concert Buddies is in Beta. An invite code is required.
+        </h1>
         <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
-          <h2>Sign Up</h2>
+          <h2>Create An Account</h2>
           {this.props.errors.map((error, idx) => (
             <li className="auth-form-error" key={idx}>
               {error}
@@ -110,7 +112,7 @@ class SignupForm extends React.Component {
             value={this.state.passwordMatch}
           />
 
-          <input className="auth-submit" type="submit" value="Sign Up" />
+          <input className="auth-submit" type="submit" value="Create Account" />
         </form>
         <Link to="/login" className="auth-swap">
           Already have an account? Log in
