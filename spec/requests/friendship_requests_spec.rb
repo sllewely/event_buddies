@@ -12,6 +12,8 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
     it 'creates a new friendship request with the given user' do
       post "/api/v1/friendship_requests", params: { pending_friend_id: user2.id }, as: :json
 
+      expect(response.status).to eq(200)
+
       friendship_request = FriendshipRequest.first
       expect(friendship_request.requesting_friend_id).to eq(user.id)
       expect(friendship_request.pending_friend_id).to eq(user2.id)
@@ -27,6 +29,15 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
       expect(user2.pending_friendship_requests).to eq([])
       expect(user2.requesting_friends).to eq([user])
       expect(user2.requesting_friendship_requests).to eq([friendship_request])
+    end
+
+    it 'cannot create duplicate friendship requests for the same person' do
+      post "/api/v1/friendship_requests", params: { pending_friend_id: user2.id }, as: :json
+
+      expect(response.status).to eq(200)
+
+      expect { post "/api/v1/friendship_requests", params: { pending_friend_id: user2.id }, as: :json }
+          .to raise_error(ActiveRecord::RecordNotUnique)
     end
   end
 
@@ -54,6 +65,7 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
 
       post "/api/v1/friendship_requests/#{user2.id}/reject"
 
+      expect(response.status).to eq(200)
       expect(user.requesting_friends).to_not include(user2)
     end
   end
