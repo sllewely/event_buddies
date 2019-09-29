@@ -11,17 +11,27 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
     json_response(res)
   end
 
+  # @param [requesting_friend_id] - the user id of the friend request to accept
   def confirm
+    current_user.requesting_friendship_requests.find(requesting_friend: requesting_friend)
     json_response('not implemented')
   end
 
-  # @param []requesting_friend_id] - the friend request to delete
+  # @param [requesting_friend_id] - the user id of the friend request to delete
   def reject
-    res = current_user.requesting_friendship_requests.find_by(requesting_friend_id: params['id']).destroy
-    json_response(res)
+    json_response(incoming_friendship_request.destroy)
   end
 
   private
+
+  def incoming_friendship_request
+    FriendshipRequest.find_by(id: params[:id], pending_friend: current_user)
+        .tap { |r| raise ActiveRecord::RecordNotFound unless r }
+  end
+
+  def requesting_friend
+    User.find(params[:requesting_friend_id])
+  end
 
   def pending_friend
     User.find(params[:pending_friend_id])
