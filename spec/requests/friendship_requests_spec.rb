@@ -53,10 +53,14 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
   end
 
   describe 'POST /friendship_requests/:id/confirm' do
-    xit 'accepts the given friendship request and creates a friendship relation' do
-      post "/api/v1/friendship_requests/#{user2.id}/confirm"
+    it 'accepts the given friendship request and creates a friendship relation' do
+      friendship_request = FriendshipRequest.create!(requesting_friend: user2, pending_friend: user)
+
+      post "/api/v1/friendship_requests/#{friendship_request.id}/confirm"
 
       expect(response.status).to eq(200)
+      expect(user.friends).to eq([user2])
+      expect(user2.friends).to eq([user])
     end
   end
 
