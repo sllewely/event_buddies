@@ -45,6 +45,8 @@ brew install postgresql
 brew upgrade postgresql
 brew postgresql-upgrade-database
 
+Copy `config/database.yml.template` file to `config/database.yml` and update credentials there if neccessary
+
 rails db:create
 rails db:migrate
 ```

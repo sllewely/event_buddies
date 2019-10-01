@@ -1,3 +1,5 @@
+# Please rename this file to database.yml and update credentials if neccessary
+
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

@@ -1,5 +1,12 @@
 export const fetchEvent = async id => {
-  const fetchResult = fetch(`/api/v1/event/${id}`);
+  const fetchResult = fetch(`/api/v1/event/${id}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -10,7 +17,14 @@ export const fetchEvent = async id => {
 };
 
 export const fetchEvents = async page => {
-  const fetchResult = fetch(`/api/v1/events?page=${page}`);
+  const fetchResult = fetch(`/api/v1/events?page=${page}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
   const response = await fetchResult;
   if (response.ok) {
     const jsonData = await response.json();
@@ -26,7 +40,8 @@ export const postEvent = async event => {
     headers: {
       Accept: "application/json",
       "Content-type": "application/json",
-      "X-CSRF-Token": window.token
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
     },
     body: JSON.stringify(event)
   });

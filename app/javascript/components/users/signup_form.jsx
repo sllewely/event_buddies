@@ -8,7 +8,10 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      friendInvite: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       password: "",
       passwordMatch: "",
       errors: null
@@ -26,11 +29,15 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.password === this.state.passwordMatch) {
-      const user = merge(
-        {},
-        { username: this.state.username },
-        { password: this.state.password }
-      );
+      const user = {
+        user: {
+          // friendInvite: this.state.friendInvite,
+          first_name: this.state.firstName,
+          last_name: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password
+        }
+      };
       this.props
         .signup(user)
         .then(
@@ -50,9 +57,11 @@ class SignupForm extends React.Component {
     const errors = this.state.errors ? <h3>{this.state.errors}</h3> : null;
     return (
       <div className="auth-form-container">
-        <h1 className="auth-form-title">Concert Buddies</h1>
+        <h1 className="auth-form-title">
+          Concert Buddies is in Beta. An invite code is required.
+        </h1>
         <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
-          <h2>Sign Up</h2>
+          <h2>Create An Account</h2>
           {this.props.errors.map((error, idx) => (
             <li className="auth-form-error" key={idx}>
               {error}
@@ -62,9 +71,30 @@ class SignupForm extends React.Component {
           <input
             className="auth-field"
             type="text"
-            onChange={this.update("username")}
-            placeholder="Username"
-            value={this.state.username}
+            onChange={this.update("friendInvite")}
+            placeholder="Friend Code"
+            value={this.state.friendInvite}
+          />
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("firstName")}
+            placeholder="First Name"
+            value={this.state.firstName}
+          />
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("lastName")}
+            placeholder="Last Name"
+            value={this.state.lastName}
+          />
+          <input
+            className="auth-field"
+            type="text"
+            onChange={this.update("email")}
+            placeholder="Email"
+            value={this.state.email}
           />
           <input
             className="auth-field"
@@ -82,7 +112,7 @@ class SignupForm extends React.Component {
             value={this.state.passwordMatch}
           />
 
-          <input className="auth-submit" type="submit" value="Sign Up" />
+          <input className="auth-submit" type="submit" value="Create Account" />
         </form>
         <Link to="/login" className="auth-swap">
           Already have an account? Log in
