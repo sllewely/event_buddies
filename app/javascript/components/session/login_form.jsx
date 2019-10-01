@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: ""
     };
   }
@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = merge({}, this.state);
+    const user = { user: this.state };
     this.props
       .login(user)
       .then(
@@ -37,9 +37,9 @@ class LoginForm extends React.Component {
           <input
             className="auth-field"
             type="text"
-            onChange={this.update("username")}
-            placeholder="Username"
-            value={this.state.username}
+            onChange={this.update("email")}
+            placeholder="Email"
+            value={this.state.email}
           />
           <input
             className="auth-field"

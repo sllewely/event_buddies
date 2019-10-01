@@ -1,5 +1,5 @@
 export const login = async user => {
-  const response = await fetch("/users/sign_in", {
+  const response = await fetch("/login", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -10,6 +10,7 @@ export const login = async user => {
   });
   if (response.ok) {
     const jsonData = await response.json();
+    window.jwt = response.headers.get("authorization");
     return jsonData;
   } else {
     throw Error(response.statusText);
@@ -17,13 +18,13 @@ export const login = async user => {
 };
 
 export const logout = async () => {
-  const response = await fetch("/users/sign_out", {
+  const response = await fetch("/logout", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRF-Token": window.token
-    },
-    credentials: "same-origin"
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
   });
   if (response.ok) {
     return;

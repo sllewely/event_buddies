@@ -8,7 +8,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: "",
       passwordMatch: "",
       errors: null
@@ -26,11 +26,12 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.password === this.state.passwordMatch) {
-      const user = merge(
-        {},
-        { username: this.state.username },
-        { password: this.state.password }
-      );
+      const user = {
+        user: {
+          email: this.state.email,
+          password: this.state.password
+        }
+      };
       this.props
         .signup(user)
         .then(
@@ -62,9 +63,9 @@ class SignupForm extends React.Component {
           <input
             className="auth-field"
             type="text"
-            onChange={this.update("username")}
-            placeholder="Username"
-            value={this.state.username}
+            onChange={this.update("email")}
+            placeholder="Email"
+            value={this.state.email}
           />
           <input
             className="auth-field"
