@@ -2,7 +2,7 @@ class API::V1::EventsController < API::V1::APIController
 
   # @param page - the next page of events to request
   def index
-    @events = current_user.events.order(:date_time).today_onwards.page(params[:page].to_i || 1)
+    @events = Event.all.order(:date_time).today_onwards.page(params[:page].to_i || 1)
     json_response(@events)
   end
 
