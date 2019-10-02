@@ -10,7 +10,6 @@ RSpec.describe 'Friendships Responses API', type: :request do
 
   describe 'GET /friendships/' do
 
-
     it 'gets all of my friends' do
       friendship_request = FriendshipRequest.create!(requesting_friend: user2, pending_friend: user)
       friendship_request.accept!
@@ -26,7 +25,5 @@ RSpec.describe 'Friendships Responses API', type: :request do
 
       expect(result.size).to eq(0)
     end
-
   end
-
 end
