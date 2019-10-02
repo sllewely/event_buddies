@@ -25,7 +25,7 @@ export const login = user => dispatch =>
 
 export const signup = user => dispatch =>
   UserUtils.createUser(user).then(
-    receivedUser => dispatch(receiveCurrentUser(receivedUser)),
+    () => dispatch(login(user)),
     err => {
       dispatch(receiveSessionErrors(err));
       throw new Error("Create User Error");
