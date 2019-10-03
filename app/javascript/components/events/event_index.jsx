@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import EventItem from "./event_item";
 import { fetchEvents } from "../../actions/event_actions.js";
 import { merge } from "lodash";
+import { Link } from "react-router-dom";
 import EventSection from "./event_section";
 import * as moment from "moment";
 
@@ -58,7 +59,19 @@ class EventsIndex extends React.Component {
     const allEvents = dateEventsTuple.map((tuple, idx) => (
       <EventSection date={tuple[0]} events={tuple[1]} key={idx} />
     ));
-    return <div className="V_Flex">{allEvents}</div>;
+    return (
+      <div>
+        <div className="center_button">
+          <Link className="new_event" to="/events/new">
+            {" "}
+            <h1 className="default_text">Post a Show</h1>
+            <i className="material-icons">add</i>
+          </Link>
+        </div>
+
+        <div className="V_Flex">{allEvents}</div>
+      </div>
+    );
   }
 }
 

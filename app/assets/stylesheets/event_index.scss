@@ -1,0 +1,19 @@
+.new_event {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  background-color: #c7ebeb;
+  border: 1px solid lightgrey;
+  margin: 5px 0;
+  width: 150px;
+}
+.new_event:hover {
+  background-color: #8bd8d8;
+}
+.center_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
