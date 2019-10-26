@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, redirect, Switch, Link, HashRouter } from "react-router-dom";
+import FriendsPage from "./friends/friends_page";
 import EventForm from "./events/event_form";
 import EventIndex from "./events/event_index";
-import FriendsPage from "./friends/friends_page";
 import Header from "./header";
 
 const Router = () => (
