@@ -21,16 +21,31 @@ RSpec.describe 'Events API', type: :request do
       expect(event.hosts).to match_array([user])
     end
 
-    xit 'creating an event fails if name is missing' do
-      post '/api/v1/events', params: { date_time: Time.now + 5.days }, as: :json
+    it 'resvps me as going when I create an event' do
+      post '/api/v1/events', params: params, as: :json
 
-      # verify user_event_response is not created too
+      event = Event.find_by(name: params[:name])
+      user_response = event.user_event_responses.first
+
+      expect(event).to be_persisted
+      expect(user_response.user_id).to eq(user.id)
+      expect(user_response.status).to eq("going")
     end
 
-    xit 'creating an event fails if date is missing' do
+    it 'creating an event fails if name is missing' do
+      post '/api/v1/events', params: { date_time: Time.now + 5.days }, as: :json
+
+      expect(result["message"]).to eq("Validation failed: Name can't be blank")
+      expect(Event.all.count).to eq(0)
+      expect(UserEventResponse.count).to eq(0)
+    end
+
+    it 'creating an event fails if date is missing' do
       post '/api/v1/events', params: { name: 'Date Missing Event' }, as: :json
 
-      # verify user_event_response is not created too
+      expect(result["message"]).to eq("Validation failed: Date time can't be blank")
+      expect(Event.all.count).to eq(0)
+      expect(UserEventResponse.count).to eq(0)
     end
   end
 

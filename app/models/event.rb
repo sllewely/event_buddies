@@ -4,6 +4,9 @@ class Event < ApplicationRecord
 
   scope :today_onwards, -> { where("date_time >= ?", Date.today.beginning_of_day) }
 
+  validates :name, presence: true
+  validates :date_time, presence: true
+
   # Get the hosts for the event
   def hosts
     users.merge(UserEventResponse.hosting)
