@@ -7,19 +7,25 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
 
   # @param [pending_friend_id] - the friend to create a friend request for
   def create
-    current_user.pending_friendship_requests.create!(pending_friend: pending_friend)
+    res = current_user.pending_friendship_requests.create!(pending_friend: pending_friend)
+    json_response(res)
   end
 
+  # @param [requesting_friend_id] - the user id of the friend request to accept
   def confirm
-    json_response('not implemented')
+    json_response(incoming_friendship_request.accept!)
   end
 
-  # @param []requesting_friend_id] - the friend request to delete
+  # @param [requesting_friend_id] - the user id of the friend request to delete
   def reject
-    current_user.requesting_friendship_requests.find_by(requesting_friend_id: params['id']).destroy
+    json_response(incoming_friendship_request.destroy)
   end
 
   private
+
+  def incoming_friendship_request
+    FriendshipRequest.find_by!(id: params[:id], pending_friend: current_user)
+  end
 
   def pending_friend
     User.find(params[:pending_friend_id])

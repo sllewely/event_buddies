@@ -17,7 +17,10 @@ Rails.application.routes.draw do
           post 'confirm', 'reject'
         end
       end
+
       resources :users, only: [:show]
+
+      resources :friendships, only: [:index]
     end
   end
 end
