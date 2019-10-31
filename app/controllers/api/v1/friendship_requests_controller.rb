@@ -24,8 +24,7 @@ class API::V1::FriendshipRequestsController < API::V1::APIController
   private
 
   def incoming_friendship_request
-    FriendshipRequest.find_by(id: params[:id], pending_friend: current_user)
-        .tap { |r| raise ActiveRecord::RecordNotFound unless r }
+    FriendshipRequest.find_by!(id: params[:id], pending_friend: current_user)
   end
 
   def pending_friend
