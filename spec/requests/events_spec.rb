@@ -21,7 +21,7 @@ RSpec.describe 'Events API', type: :request do
       expect(event.hosts).to match_array([user])
     end
 
-    it 'resvps me as going when I create an event' do
+    it 'rsvps me as going when I create an event' do
       post '/api/v1/events', params: params, as: :json
 
       event = Event.find_by(name: params[:name])
@@ -136,5 +136,35 @@ RSpec.describe 'Events API', type: :request do
       end
     end
 
+  end
+
+  describe 'GET /events/:id' do
+    let(:event_a) do
+      create(:event, name: 'Mini Mansions', date_time: DateTime.now + 1, location: "Bowery Ballroom",
+             description: 'rock', event_link: 'www.google.com')
+    end
+
+    before do
+      sign_in user
+
+      create(:user_event_response, user: user, event: event_a, host: true)
+    end
+
+    it 'shows the given event I have created' do
+      get "/api/v1/events/#{event_a.id}"
+
+      expect(result['name']).to eq(event_a.name)
+      expect(result['location']).to eq (event_a.location)
+      expect(result['description']).to eq(event_a.description)
+      expect(result['event_link']).to eq(event_a.event_link)
+    end
+
+    xit 'shows the event I am invited to' do
+
+    end
+
+    xit 'I cannot see an event I do not have permission to' do
+
+    end
   end
 end
