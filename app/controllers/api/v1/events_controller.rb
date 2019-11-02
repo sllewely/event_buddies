@@ -20,7 +20,11 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def update
-    Event.hosted_by(current_user.id).find_by!(id: params[:id]).update!(event_params)
+    json_response(Event.hosted_by(current_user.id).find_by!(id: params[:id]).update!(event_params))
+  end
+
+  def delete
+    # TODO
   end
 
   private
