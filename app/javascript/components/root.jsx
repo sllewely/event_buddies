@@ -14,7 +14,7 @@ class Root extends React.Component {
 
   componentDidMount() {
     window.addEventListener("beforeunload", this.componentCleanup);
-    window.jwt = sessionStorage.getItem("jwt");
+    window.jwt = JSON.parse(sessionStorage.getItem("jwt"));
     this.props.setJwtToken(window.jwt);
   }
 
