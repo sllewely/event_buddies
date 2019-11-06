@@ -11,7 +11,7 @@ export const login = async user => {
   if (response.ok) {
     const jsonData = await response.json();
     window.jwt = response.headers.get("authorization");
-    return jsonData;
+    return [jsonData, window.jwt];
   } else {
     throw Error(response.statusText);
   }

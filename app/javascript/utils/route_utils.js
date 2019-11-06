@@ -33,7 +33,7 @@ const Con = ({ loggedIn, TrueComp, FalseComp, path, exact, conditional }) => (
 );
 
 const mapStateToProps = state => {
-  return { loggedIn: Boolean(state.session.currentUser) };
+  return { loggedIn: Boolean(state.session.jwtToken) };
 };
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
