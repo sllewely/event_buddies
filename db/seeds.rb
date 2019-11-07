@@ -19,6 +19,7 @@ end
 
 # Friendships
 
+# Seed users
 User.destroy_all
 user = User.create(first_name: "Test", last_name: "Tester", email: "tester@gmail.com", password: "password")
 users = []
