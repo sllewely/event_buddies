@@ -30,10 +30,14 @@ users = []
       password: "password"
   )
 end
+# Create friendships
 user.pending_friendship_requests.create!(pending_friend: users[0])
 user.pending_friendship_requests.create!(pending_friend: users[1])
 user.pending_friendship_requests.create!(pending_friend: users[2])
 users[0].pending_friendship_requests.create!(pending_friend: users[1])
 users[0].pending_friendship_requests.create!(pending_friend: users[2])
 users[1].pending_friendship_requests.create!(pending_friend: users[3])
+users[3].pending_friendship_requests.create!(pending_friend: users[4])
 FriendshipRequest.all.each { |fr| fr.accept! }
+# and one limbo request
+user.pending_friendship_requests.create!(pending_friend: users[3])
