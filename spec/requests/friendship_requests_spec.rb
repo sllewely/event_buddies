@@ -61,6 +61,8 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
       expect(response.status).to eq(200)
       expect(user.friends).to eq([user2])
       expect(user2.friends).to eq([user])
+
+      expect(FriendshipRequest.all.size).to eq(0)
     end
   end
 
