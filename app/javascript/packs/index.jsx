@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "../store/store";
 import Root from "../components/root";
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Titillium Web:300,400,700', 'sans-serif']
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const store = configureStore();

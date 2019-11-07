@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="auth-form-container">
-        <h1 className="auth-form-title">Concert Buddies</h1>
+        <h1 className="auth-form-title" class="fancy_header">Concert Buddies</h1>
         <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
           <h2>Log In</h2>
           <input

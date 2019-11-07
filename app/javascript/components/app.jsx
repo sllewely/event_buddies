@@ -7,7 +7,8 @@ import { AuthRoute, ConRoute } from "../utils/route_utils";
 
 const App = () => (
   <main>
-    <Switch>
+      <link href="https://fonts.googleapis.com/css?family=Cutive|Oleo+Script|Oleo+Script+Swash+Caps&display=swap" rel="stylesheet"/>
+      <Switch>
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ConRoute

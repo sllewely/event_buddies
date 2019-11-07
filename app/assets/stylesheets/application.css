@@ -97,3 +97,15 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.fancy_header {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.header {
+    font-family: 'Oleo Script', cursive;
+}
+
+.text {
+    font-family: 'Cutive', serif;
+}
