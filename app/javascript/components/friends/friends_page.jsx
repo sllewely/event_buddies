@@ -2,6 +2,7 @@ import React from "react";
 import PendingFriendsIndex from "./pending_friends_index";
 import FriendIndex from "./friends_index";
 import { Link } from "react-router-dom";
+import { fetchFriends } from "../../utils/user_api_utils.js";
 
 class FriendsPage extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class FriendsPage extends React.Component {
           </div>
         </div>
         <PendingFriendsIndex pendingFriends={[]} />
-        <FriendIndex friends={[]} />
+        <FriendIndex />
       </div>
     );
   }
