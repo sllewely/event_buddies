@@ -2,9 +2,15 @@ import * as UserUtils from "../utils/user_api_utils";
 
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
 
 const receiveUsers = payload => ({
   type: RECEIVE_USERS,
+  payload
+});
+
+const receiveFriends = payload => ({
+  type: RECEIVE_FRIENDS,
   payload
 });
 
@@ -19,9 +25,8 @@ export const fetchUser = id => dispatch =>
     err => dispatch(receiveUserErrors(err))
   );
 
-export const fetchUsers = () => dispatch =>
-  UserUtils.fetchUsers().then(
-    receivedUsers => dispatch(receiveUsers(receivedUsers)),
+export const fetchFriends = () => dispatch =>
+  UserUtils.fetchFriends().then(
+    receivedUsers => dispatch(receiveFriends(receivedUsers)),
     err => dispatch(receiveUserErrors(err))
   );
-
