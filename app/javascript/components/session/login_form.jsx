@@ -3,7 +3,6 @@ import { merge } from "lodash";
 import { login } from "../../actions/session_actions";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import ExternalHeader from "../external_header";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -33,9 +32,8 @@ class LoginForm extends React.Component {
     return (
       <div>
         <div className="auth-form-container">
-          <h1 className="auth-form-title fancy_header">Concert Buddies</h1>
           <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
-            <h2>Log In</h2>
+            <h2 className="header">Log In</h2>
             <input
               className="auth-field"
               type="text"
