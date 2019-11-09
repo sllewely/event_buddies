@@ -23,8 +23,8 @@ class FriendsIndex extends React.Component {
 
 const msp = state => {
   return {
-    friends: state.session.currentUser.friend_ids.map(
-      friend_id => state.entities.users[friend_id]
+    friends: state.session.currentUser.friendIds.map(
+      friendId => state.entities.users[friendId]
     )
   };
 };
