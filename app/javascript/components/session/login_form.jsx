@@ -3,6 +3,7 @@ import { merge } from "lodash";
 import { login } from "../../actions/session_actions";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import ExternalHeader from "../external_header";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -30,30 +31,32 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="auth-form-container">
-        <h1 className="auth-form-title fancy_header">Concert Buddies</h1>
-        <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
-          <h2>Log In</h2>
-          <input
-            className="auth-field"
-            type="text"
-            onChange={this.update("email")}
-            placeholder="Email"
-            value={this.state.email}
-          />
-          <input
-            className="auth-field"
-            type="password"
-            onChange={this.update("password")}
-            placeholder="Password"
-            value={this.state.password}
-          />
+      <div>
+        <div className="auth-form-container">
+          <h1 className="auth-form-title fancy_header">Concert Buddies</h1>
+          <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
+            <h2>Log In</h2>
+            <input
+              className="auth-field"
+              type="text"
+              onChange={this.update("email")}
+              placeholder="Email"
+              value={this.state.email}
+            />
+            <input
+              className="auth-field"
+              type="password"
+              onChange={this.update("password")}
+              placeholder="Password"
+              value={this.state.password}
+            />
 
-          <input className="auth-submit" type="submit" value="Log In" />
-        </form>
-        <Link to="/signup" className="auth-swap">
-          Create Account
-        </Link>
+            <input className="auth-submit" type="submit" value="Log In" />
+          </form>
+          <Link to="/signup" className="auth-swap">
+            Create Account
+          </Link>
+        </div>
       </div>
     );
   }
