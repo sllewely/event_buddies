@@ -47,6 +47,7 @@ RSpec.describe 'Friendship Requests Responses API', type: :request do
 
       get '/api/v1/friendship_requests', as: :json
 
+      binding.pry
       expect(result.first['pending_friend_id']).to eq(user.id)
       expect(result.first['requesting_friend_id']).to eq(user2.id)
     end
