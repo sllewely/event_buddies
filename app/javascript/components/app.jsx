@@ -7,7 +7,7 @@ import { AuthRoute, ConRoute } from "../utils/route_utils";
 
 const App = () => (
   <main>
-      <Switch>
+    <Switch>
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ConRoute
