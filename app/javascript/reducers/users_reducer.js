@@ -1,5 +1,9 @@
 import { merge } from "lodash";
-import { RECEIVE_USERS, RECEIVE_FRIENDS } from "../actions/user_actions";
+import {
+  RECEIVE_USERS,
+  RECEIVE_FRIENDS,
+  RECEIVE_PENDING_FRIENDS
+} from "../actions/user_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const UsersReducer = (state = {}, action) => {
@@ -8,6 +12,7 @@ const UsersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, state, action.payload.users);
     case RECEIVE_FRIENDS:
+    case RECEIVE_PENDING_FRIENDS:
       let newFriends = {};
       action.payload.forEach(friend => {
         newFriends[friend.id] = friend;
