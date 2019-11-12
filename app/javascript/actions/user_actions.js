@@ -4,6 +4,8 @@ export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
 export const RECEIVE_PENDING_FRIENDS = "RECEIVE_PENDING_FRIENDS";
+export const REMOVE_PENDING_FRIEND = "REMOVE_PENDING_FRIEND";
+export const ACCEPT_PENDING_FRIEND = "ACCEPT_PENDING_FRIEND";
 
 const receiveUsers = payload => ({
   type: RECEIVE_USERS,
@@ -25,6 +27,16 @@ const receiveUserErrors = payload => ({
   payload
 });
 
+const addPendingFriend = payload => ({
+  type: ACCEPT_PENDING_FRIEND,
+  payload
+});
+
+const removePendingFriend = payload => ({
+  type: REMOVE_PENDING_FRIEND,
+  payload
+});
+
 export const fetchUser = id => dispatch =>
   UserUtils.fetchUser(id).then(
     receivedUser => dispatch(receiveUsers(receivedUser)),
@@ -40,5 +52,17 @@ export const fetchFriends = () => dispatch =>
 export const fetchPendingFriends = () => dispatch =>
   UserUtils.fetchPendingFriends().then(
     receivedUsers => dispatch(receivePendingFriends(receivedUsers)),
+    err => dispatch(receiveUserErrors(err))
+  );
+
+export const acceptPendingFriend = id => dispatch =>
+  UserUtils.acceptPendingFriend(id).then(
+    receivedUser => dispatch(addPendingFriend(receivedUser)),
+    err => dispatch(receiveUserErrors(err))
+  );
+
+export const rejectPendingFriend = id => dispatch =>
+  UserUtils.rejectPendingFriend(id).then(
+    receivedUser => dispatch(removePendingFriend(receivedUser)),
     err => dispatch(receiveUserErrors(err))
   );
