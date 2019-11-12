@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import LogoutButton from "./session/logout_button";
 
 const ExternalHeader = props => {
     return (
