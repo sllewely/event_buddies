@@ -39,5 +39,18 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
+  describe 'GET /users' do
+    it 'returns all users' do
+      user
+      user2
+
+      get "/api/v1/users", as: :json
+
+      first_names = result.map { |u| u["first_name"] }
+      expect(first_names).to include(user.first_name)
+      expect(first_names).to include(user2.first_name)
+    end
+  end
+
 
 end
