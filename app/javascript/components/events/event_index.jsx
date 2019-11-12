@@ -60,7 +60,7 @@ class EventsIndex extends React.Component {
       <EventSection date={tuple[0]} events={tuple[1]} key={idx} />
     ));
     return (
-      <div>
+      <div className="container">
         <div className="center_button">
           <Link className="new_event" to="/events/new">
             {" "}
