@@ -3,6 +3,7 @@ import { merge } from "lodash";
 import { signup } from "../../actions/session_actions";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import ExternalHeader from "../external_header";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -56,67 +57,70 @@ class SignupForm extends React.Component {
   render() {
     const errors = this.state.errors ? <h3>{this.state.errors}</h3> : null;
     return (
-      <div className="auth-form-container">
-        <h1 className="auth-form-title">
-          Concert Buddies is in Beta. An invite code is required.
-        </h1>
-        <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
-          <h2>Create An Account</h2>
-          {this.props.errors.map((error, idx) => (
-            <li className="auth-form-error" key={idx}>
-              {error}
-            </li>
-          ))}
-          {errors}
-          <input
-            className="auth-field"
-            type="text"
-            onChange={this.update("friendInvite")}
-            placeholder="Friend Code"
-            value={this.state.friendInvite}
-          />
-          <input
-            className="auth-field"
-            type="text"
-            onChange={this.update("firstName")}
-            placeholder="First Name"
-            value={this.state.firstName}
-          />
-          <input
-            className="auth-field"
-            type="text"
-            onChange={this.update("lastName")}
-            placeholder="Last Name"
-            value={this.state.lastName}
-          />
-          <input
-            className="auth-field"
-            type="text"
-            onChange={this.update("email")}
-            placeholder="Email"
-            value={this.state.email}
-          />
-          <input
-            className="auth-field"
-            type="password"
-            onChange={this.update("password")}
-            onBlur={this.clearPasswordMismatchError()}
-            placeholder="Password"
-            value={this.state.password}
-          />
-          <input
-            className="auth-field"
-            type="password"
-            onChange={this.update("passwordMatch")}
-            placeholder="Confirm Password"
-            value={this.state.passwordMatch}
-          />
+      <div>
+        <ExternalHeader/>
+        <div className="auth-form-container">
+          <h1 className="auth-form-title">
+            Concert Buddies is in Beta. An invite code is required.
+          </h1>
+          <form className="auth-form" onSubmit={e => this.handleSubmit(e)}>
+            <h2>Create An Account</h2>
+            {this.props.errors.map((error, idx) => (
+              <li className="auth-form-error" key={idx}>
+                {error}
+              </li>
+            ))}
+            {errors}
+            <input
+              className="auth-field"
+              type="text"
+              onChange={this.update("friendInvite")}
+              placeholder="Friend Code"
+              value={this.state.friendInvite}
+            />
+            <input
+              className="auth-field"
+              type="text"
+              onChange={this.update("firstName")}
+              placeholder="First Name"
+              value={this.state.firstName}
+            />
+            <input
+              className="auth-field"
+              type="text"
+              onChange={this.update("lastName")}
+              placeholder="Last Name"
+              value={this.state.lastName}
+            />
+            <input
+              className="auth-field"
+              type="text"
+              onChange={this.update("email")}
+              placeholder="Email"
+              value={this.state.email}
+            />
+            <input
+              className="auth-field"
+              type="password"
+              onChange={this.update("password")}
+              onBlur={this.clearPasswordMismatchError()}
+              placeholder="Password"
+              value={this.state.password}
+            />
+            <input
+              className="auth-field"
+              type="password"
+              onChange={this.update("passwordMatch")}
+              placeholder="Confirm Password"
+              value={this.state.passwordMatch}
+            />
 
-          <input className="auth-submit" type="submit" value="Create Account" />
-        </form>
-        <Link to="/login" className="auth-swap">
-          Already have an account? Log in
-        </Link>
+            <input className="auth-submit" type="submit" value="Create Account" />
+          </form>
+          <Link to="/login" className="auth-swap">
+            Already have an account? Log in
+          </Link>
+        </div>
       </div>
     );
   }

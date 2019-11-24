@@ -56,6 +56,7 @@ small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
+  font-family: 'Cutive', serif;
 }
 * {
   box-sizing: border-box;
@@ -92,8 +93,21 @@ input[type="submit"] {
 
 main {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fancy_header {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.header {
+    font-family: 'Oleo Script', cursive;
 }
