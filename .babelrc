@@ -7,7 +7,6 @@
         "targets": {
           "node": "current"
         },
-        "useBuiltIns": true
       }
     ],
     "@babel/preset-react"
