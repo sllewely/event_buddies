@@ -76,7 +76,7 @@ RSpec.describe 'Events API', type: :request do
 
       it 'returns user event responses with the events' do
         event_responses =  result.select { |e| e["name"] == "Mini Mansions" }.first["user_event_responses"].first
-        
+
         expect(event_responses["user_id"]).to eq(user.id)
         expect(event_responses["host"]).to eq(true)
         expect(event_responses["status"]).to eq("going")
