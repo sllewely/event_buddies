@@ -2,8 +2,9 @@
   "name": "concert_buddies",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.2.2",
-    "babel-preset-react": "^6.24.1",
     "eslint": "^5.9.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
