@@ -60,7 +60,7 @@ RSpec.describe 'Events API', type: :request do
       before do
         sign_in user
 
-        create(:user_event_response, user: user, event: event_a, host: true)
+        create(:user_event_response, user: user, event: event_a, host: true, status: "going")
         create(:user_event_response, user: user, event: event_b)
         create(:user_event_response, user: user, event: event_d, host: true)
         create(:user_event_response, user: user, event: event_e)
@@ -72,6 +72,13 @@ RSpec.describe 'Events API', type: :request do
       it 'gets all of the events I have been invited to' do
         expect(result.any? { |r| r['name'] == event_b.name }).to be(true)
         expect(result.any? { |r| r['name'] == event_e.name }).to be(true)
+      end
+
+      it 'returns user event responses with the events' do
+        event_responses =  result.select { |e| e["name"] == "Mini Mansions" }.first["user_event_responses"].first
+        expect(event_responses["user_id"]).to eq(user.id)
+        expect(event_responses["host"]).to eq(true)
+        expect(event_responses["status"]).to eq("going")
       end
 
       it 'gets all of the events I have created' do
