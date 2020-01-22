@@ -16,6 +16,10 @@ Rails version 6.0.0
 
 ## Install
 
+First install:
+* homebrew
+* rbenv
+
 Get Ruby version
 
 ```
@@ -80,6 +84,15 @@ Run tests
 bundle exec rails db:migrate RAILS_ENV=test
 bundle exec rspec
 ```
+
+## Seeds
+
+```rails seeds```
+
+This will populate events and users, along with a test user account you can use.
+Login:
+*tester@gmail.com*
+*password*
 
 ## Docker Compose setup
 
