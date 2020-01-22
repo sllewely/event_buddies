@@ -26,6 +26,7 @@ Get Ruby version
 brew update && brew upgrade ruby-build
 rbenv install 2.6.4
 rbenv local 2.6.4
+brew install postgresql
 gem install bundle
 bundle install
 ```
@@ -44,8 +45,6 @@ yarn install
 postgres
 
 ```
-brew install postgresql
-# or
 brew upgrade postgresql
 brew postgresql-upgrade-database
 
@@ -87,7 +86,7 @@ bundle exec rspec
 
 ## Seeds
 
-```rails seeds```
+```rails db:seed```
 
 This will populate events and users, along with a test user account you can use.
 Login:
