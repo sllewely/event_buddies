@@ -3,6 +3,7 @@ import * as UserUtils from "../utils/user_api_utils";
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_JWT_TOKEN = "RECEIVE_JWT_TOKEN";
 
 const receiveCurrentUser = payload => ({
   type: RECEIVE_CURRENT_USER,
@@ -14,9 +15,15 @@ const receiveSessionErrors = payload => ({
   payload
 });
 
+const receiveJwtToken = payload => ({
+  type: RECEIVE_JWT_TOKEN,
+  payload
+});
+
 export const login = user => dispatch =>
   SessionUtils.login(user).then(
-    receivedUser => dispatch(receiveCurrentUser(receivedUser)),
+    ([receivedUser, token]) =>
+      dispatch(receiveCurrentUser({ receivedUser, token })),
     err => {
       dispatch(receiveSessionErrors(err));
       throw new Error("Session Login Error");
@@ -40,3 +47,6 @@ export const logout = () => dispatch =>
       throw new Error("Session Logout Error");
     }
   );
+
+export const setJwtToken = token => dispatch =>
+  dispatch(receiveJwtToken(token));
