@@ -169,31 +169,31 @@ RSpec.describe 'Events API', type: :request do
   end
 
   describe 'PATCH /events/:id' do
-    let(:event_a) do
+    let(:event) do
       create(:event, name: 'Mini Mansions', date_time: DateTime.now + 1, location: "Bowery Ballroom",
              description: 'rock', event_link: 'www.google.com')
     end
-    let(:event_b) { create(:event, name: 'Otep', date_time: DateTime.now + 1, location: "Webster Hall") }
 
     before do
       sign_in user
-
-      create(:user_event_response, user: user, event: event_a, host: true)
-      create(:user_event_response, user: user, event: event_b)
     end
 
     it 'updates the description' do
-      patch "/api/v1/events/#{event_a.id}", params: { description: "fun rock band" }, as: :json
+      create(:user_event_response, user: user, event: event, host: true)
+
+      patch "/api/v1/events/#{event.id}", params: { description: "fun rock band" }, as: :json
 
       expect(result).to eq(true)
-      expect(Event.find(event_a.id).description).to eq("fun rock band")
+      expect(Event.find(event.id).description).to eq("fun rock band")
     end
 
     it 'wont let me update an event I do not host' do
-      patch "/api/v1/events/#{event_b.id}", params: { description: "fun rock band" }, as: :json
+      create(:user_event_response, user: user, event: event)
+
+      patch "/api/v1/events/#{event.id}", params: { description: "fun rock band" }, as: :json
 
       expect(response.status).to eq(404)
-      expect(Event.find(event_b.id).description).to be_nil
+      expect(Event.find(event.id).description).to eq("rock")
     end
   end
 end
