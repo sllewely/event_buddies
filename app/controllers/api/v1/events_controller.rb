@@ -15,7 +15,12 @@ class API::V1::EventsController < API::V1::APIController
   end
 
   def show
+    # TODO: must have permission for this event
     json_response(Event.find(params[:id]))
+  end
+
+  def update
+    json_response(Event.hosted_by(current_user.id).find_by!(id: params[:id]).update!(event_params))
   end
 
   private
