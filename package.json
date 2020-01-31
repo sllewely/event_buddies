@@ -6,6 +6,7 @@
     "@babel/preset-react": "^7.8.3",
     "@rails/webpacker": "^4.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^4.4.1",
     "core-js": "3",
     "eslint": "^5.9.0",
     "lodash": "^4.17.10",
@@ -13,6 +14,7 @@
     "prettier": "^1.14.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-datetime": "^2.15.0",
     "react-dom": "^16.12.0",
     "react-redux": "^5.0.7",
@@ -23,6 +25,12 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "sugarss": "^2.0.0",
     "webpack-dev-server": "^3.10.1"
   }
 }
