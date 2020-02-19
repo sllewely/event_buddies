@@ -5,7 +5,7 @@ import { Dropdown } from "react-bootstrap";
 
 const EventSection = ({ date, events }) => {
   const allEvents = events.map(event => (
-    <span>
+    <div>
       <DropDown>
         <Dropdown.Toggle id="dropdown-action-1">Action?</Dropdown.Toggle>
         <Dropdown.Menu className="super-colors">
@@ -15,7 +15,7 @@ const EventSection = ({ date, events }) => {
         </Dropdown.Menu>
       </DropDown>
       <EventItem event={event} key={event.id} />
-    </span>
+    </div>
   ));
   return (
     <div className="event__section V_Flex">
