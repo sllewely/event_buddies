@@ -10,8 +10,6 @@ RSpec.describe 'Authentication', type: :request do
   describe 'POST login' do
     let(:url) { '/login.json' }
 
-    before { post url, params: params }
-
     context 'valid credentials' do
       before { post url, params: params }
 
@@ -31,6 +29,7 @@ RSpec.describe 'Authentication', type: :request do
         { user: { email: 'invalid@email.comn', password: 'password' } }
       end
 
+      before { post url, params: params }
 
       specify { expect(response.status).to eq 401 }
     end
