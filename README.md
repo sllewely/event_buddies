@@ -47,6 +47,7 @@ postgres
 ```
 brew upgrade postgresql
 brew postgresql-upgrade-database
+/usr/local/opt/postgres/bin/createuser -s postgres
 
 cp config/database.yml.template config/database.yml
 
