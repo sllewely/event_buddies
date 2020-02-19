@@ -12,6 +12,8 @@ class User < ApplicationRecord
            class_name: 'FriendshipRequest', dependent: :destroy
   has_many :requesting_friends, through: :requesting_friendship_requests, source: :requesting_friend
 
+  has_one_attached :profile_picture
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :jwt_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
