@@ -71,10 +71,15 @@
   cursor: pointer;
   color: #21d4e5;
 }
+
 .event__item_link:hover {
   cursor: pointer;
   color: #21d4e5;
   text-decoration: underline;
+}
+
+.dropdown {
+  width: 200px;
 }
 
 .material-icons.md-36 {

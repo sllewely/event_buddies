@@ -3,12 +3,22 @@ import { Link } from "react-router-dom";
 import UserAttendance from "../users/user_attendance";
 import { connect } from "react-redux";
 import * as moment from "moment";
+import Select from 'react-select';
+
+const options = [
+  { value: 'interested', label: 'Interested' },
+  { value: 'going', label: 'Going' },
+  { value: 'cant_go', label: 'Cant Go' },
+  { value: 'not_interested', label: 'Not Interested'},
+  { value: 'no_status', label: 'No Status'}
+];
 
 class EventItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      selectedOption: null
     };
   }
 
@@ -24,6 +34,13 @@ class EventItem extends React.Component {
     }
   }
 
+  handleChange = selectedOption => {
+    this.setState(
+      { selectedOption },
+      () => console.log('Option selected:', this.state.selectedOption)
+    );
+  };
+
   toggleExpandedInfo() {
     return e =>
       this.setState(prevState => ({
@@ -32,6 +49,8 @@ class EventItem extends React.Component {
   }
 
   render() {
+    const { selectedOption} = this.state;
+    
     const { event, attendingUsers } = this.props;
     const visibility = this.state.expanded
       ? "event__item_expanded"
@@ -40,58 +59,65 @@ class EventItem extends React.Component {
       <UserAttendance user={user} attendance="attending" key={user.id} />
     ));
     return (
-      <article className="event__item V_Flex">
-        <section className="H_Flex">
-          <div className="V_Flex">
-            <div className="H_Flex">
-              <h1 className="header_text" onClick={this.toggleExpandedInfo()}>
-                {event.name}
-              </h1>
-              <span
-                className="event__item_spacer"
-                onClick={this.toggleExpandedInfo()}
-              >
-                @
-              </span>
+      <div>
+        <Select className="dropdown"
+          value={selectedOption}
+          onChange={this.handleChange}
+          options={options}
+        />
+        <article className="event__item V_Flex">
+          <section className="H_Flex">
+            <div className="V_Flex">
+              <div className="H_Flex">
+                <h1 className="header_text" onClick={this.toggleExpandedInfo()}>
+                  {event.name}
+                </h1>
+                <span
+                  className="event__item_spacer"
+                  onClick={this.toggleExpandedInfo()}
+                >
+                  @
+                </span>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    event.location
+                  )}`}
+                  className="header_text event__item_link"
+                  target="_blank"
+                >
+                  {this.truncate(event.location)}
+                </a>
+              </div>
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  event.location
-                )}`}
-                className="header_text event__item_link"
+                href={event.event_link}
                 target="_blank"
+                className={`default_text event__item_link ${visibility}`}
               >
-                {this.truncate(event.location)}
+                Buy Tickets here
               </a>
             </div>
-            <a
-              href={event.event_link}
-              target="_blank"
-              className={`default_text event__item_link ${visibility}`}
-            >
-              Buy Tickets here
-            </a>
-          </div>
+            <div className="V_Flex">
+              <div className="H_Flex">
+                <h1 className="default_text">
+                  {event.date_time.format("h:mm A")}
+                </h1>
+                <i
+                  className="material-icons md-36 md-dark event__item_toggle"
+                  onClick={this.toggleExpandedInfo()}
+                >
+                  {this.state.expanded ? "expand_less" : "expand_more"}
+                </i>
+              </div>
+            </div>
+          </section>
           <div className="V_Flex">
-            <div className="H_Flex">
-              <h1 className="default_text">
-                {event.date_time.format("h:mm A")}
-              </h1>
-              <i
-                className="material-icons md-36 md-dark event__item_toggle"
-                onClick={this.toggleExpandedInfo()}
-              >
-                {this.state.expanded ? "expand_less" : "expand_more"}
-              </i>
+            <p className={`default_text ${visibility}`}>{event.description}</p>
+            <div className={`H_Flex attending__bubbles__container ${visibility}`}>
+              {attendingBubbles}
             </div>
           </div>
-        </section>
-        <div className="V_Flex">
-          <p className={`default_text ${visibility}`}>{event.description}</p>
-          <div className={`H_Flex attending__bubbles__container ${visibility}`}>
-            {attendingBubbles}
-          </div>
-        </div>
-      </article>
+        </article>
+      </div>
     );
   }
 }
