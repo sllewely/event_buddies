@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as moment from "moment";
 import Select from 'react-select';
 
-const options = [
+const eventStatusOptions = [
   { value: 'interested', label: 'Interested' },
   { value: 'going', label: 'Going' },
   { value: 'cant_go', label: 'Cant Go' },
@@ -18,7 +18,7 @@ class EventItem extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      selectedOption: null
+      eventStatus: null
     };
   }
 
@@ -34,12 +34,7 @@ class EventItem extends React.Component {
     }
   }
 
-  handleChange = selectedOption => {
-    this.setState(
-      { selectedOption },
-      () => console.log('Option selected:', this.state.selectedOption)
-    );
-  };
+  handleEventStatus = eventStatus => { this.setState({ eventStatus }); };
 
   toggleExpandedInfo() {
     return e =>
@@ -49,7 +44,7 @@ class EventItem extends React.Component {
   }
 
   render() {
-    const { selectedOption} = this.state;
+    const { eventStatus} = this.state;
     
     const { event, attendingUsers } = this.props;
     const visibility = this.state.expanded
@@ -60,10 +55,10 @@ class EventItem extends React.Component {
     ));
     return (
       <div>
-        <Select className="dropdown"
-          value={selectedOption}
-          onChange={this.handleChange}
-          options={options}
+        <Select className="event__item_dropdown"
+          value={eventStatus}
+          onChange={this.handleEventStatus}
+          options={eventStatusOptions}
         />
         <article className="event__item V_Flex">
           <section className="H_Flex">
