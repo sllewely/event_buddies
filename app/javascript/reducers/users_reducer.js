@@ -12,12 +12,18 @@ const UsersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, state, action.payload.users);
     case RECEIVE_FRIENDS:
-    case RECEIVE_PENDING_FRIENDS:
       let newFriends = {};
       action.payload.forEach(friend => {
         newFriends[friend.id] = friend;
       });
       return merge({}, state, newFriends);
+    case RECEIVE_PENDING_FRIENDS:
+      let pendingFriends = {};
+      action.payload.forEach(friendRequest => {
+        pendingFriends[friendRequest.requesting_friend.id] =
+          friendRequest.requesting_friend;
+      });
+      return merge({}, state, pendingFriends);
     case RECEIVE_CURRENT_USER:
       return merge({}, state, action.payload);
     default:
