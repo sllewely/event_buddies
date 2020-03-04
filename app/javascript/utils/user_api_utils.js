@@ -16,8 +16,26 @@ export const fetchUser = async id => {
   }
 };
 
-export const fetchUsers = async () => {
-  const fetchResult = fetch(`/api/v1/users`, {
+export const fetchFriends = async () => {
+  const fetchResult = fetch(`/api/v1/friendships`, {
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
+  const response = await fetchResult;
+  if (response.ok) {
+    const jsonData = await response.json();
+    return jsonData;
+  } else {
+    throw Error(response.statusText);
+  }
+};
+
+export const fetchPendingFriends = async () => {
+  const fetchResult = fetch(`/api/v1/friendship_requests`, {
     headers: {
       Accept: "application/json",
       "Content-type": "application/json",
