@@ -54,6 +54,7 @@ export const postEvent = async event => {
 };
 
 export const postRSVP = async rsvp => {
+  debugger;
   const response = await fetch(`/api/v1/events/${rsvp.eventID}/user_event_responses`, {
     method: "POST",
     headers: {
