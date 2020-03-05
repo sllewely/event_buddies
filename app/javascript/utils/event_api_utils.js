@@ -52,3 +52,23 @@ export const postEvent = async event => {
     throw Error(response.statusText);
   }
 };
+
+export const postPSVP = async rsvp => {
+  const postRSVP = await fetch(`/api/v1/${rsvp.eventID}/user_event_responses`, {
+    method: "POST",
+    header: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    },
+    body: JSON.stringify(rsvp.status)
+  });
+  const response = await fetchResult;
+  if(response.ok) {
+    const jsonData = await response.json();
+    return jsonData;
+  } else {
+    throw Error(response.statusText);
+  }
+};
