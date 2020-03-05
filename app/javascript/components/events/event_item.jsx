@@ -39,7 +39,7 @@ class EventItem extends React.Component {
     this.setState({ eventStatus });
     // console.log("this is your event status! " + eventStatus); 
     // debugger;
-    postRSVP({ 
+    this.props.postRSVP({ 
       eventID: this.props.event.id,
       status: eventStatus.value  
     });
@@ -135,7 +135,13 @@ const msp = (state, ownProps) => {
   };
 };
 
+const mdp = dispatch => {
+  return {
+    postRSVP: rsvp => dispatch(postRSVP(rsvp))
+  };
+};
+
 export default connect(
   msp,
-  null
+  mdp
 )(EventItem);

@@ -53,8 +53,8 @@ export const postEvent = async event => {
   }
 };
 
-export const postPSVP = async rsvp => {
-  const postRSVP = await fetch(`/api/v1/${rsvp.eventID}/user_event_responses`, {
+export const postRSVP = async rsvp => {
+  const response = await fetch(`/api/v1/events/${rsvp.eventID}/user_event_responses`, {
     method: "POST",
     header: {
       Accept: "application/json",
@@ -64,7 +64,6 @@ export const postPSVP = async rsvp => {
     },
     body: JSON.stringify(rsvp.status)
   });
-  const response = await fetchResult;
   if(response.ok) {
     const jsonData = await response.json();
     return jsonData;
