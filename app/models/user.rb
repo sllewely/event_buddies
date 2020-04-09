@@ -16,4 +16,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :jwt_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
          :validatable, :timeoutable, jwt_revocation_strategy: JWTBlacklist
+  
+  has_one_attached :profile_pic
 end
