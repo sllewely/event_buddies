@@ -25,7 +25,8 @@ const UsersReducer = (state = {}, action) => {
       });
       return merge({}, state, pendingFriends);
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, action.payload);
+      let user = action.payload.receivedUser
+      return merge({}, state, {[user.id]: user});
     default:
       return state;
   }
