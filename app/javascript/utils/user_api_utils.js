@@ -52,6 +52,44 @@ export const fetchPendingFriends = async () => {
   }
 };
 
+export const acceptPendingFriend = async id => {
+  const fetchResult = fetch(`/api/v1/friendship_requests/${id}/confirm`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
+  const response = await fetchResult;
+  if (response.ok) {
+    const jsonData = await response.json();
+    return jsonData;
+  } else {
+    throw Error(response.statusText);
+  }
+};
+
+export const rejectPendingFriend = async id => {
+  const fetchResult = fetch(`/api/v1/friendship_requests/${id}/reject`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-type": "application/json",
+      "X-CSRF-Token": window.token,
+      authorization: window.jwt
+    }
+  });
+  const response = await fetchResult;
+  if (response.ok) {
+    const jsonData = await response.json();
+    return jsonData;
+  } else {
+    throw Error(response.statusText);
+  }
+};
+
 export const createUser = async user => {
   const response = await fetch("/signup", {
     method: "POST",
