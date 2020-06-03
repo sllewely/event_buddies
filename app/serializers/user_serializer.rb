@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   
-  attributes :id, :first_name, :last_name, :profile_thumbnail_url
+  attributes :id, :first_name, :last_name
   attribute :email, if: :is_current_user?
 
   def profile_thumbnail_url
