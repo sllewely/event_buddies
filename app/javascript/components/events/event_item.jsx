@@ -4,6 +4,7 @@ import UserAttendance from "../users/user_attendance";
 import { connect } from "react-redux";
 import * as moment from "moment";
 import Select from 'react-select';
+import { postRSVP } from '../../actions/event_actions.js';
 
 const eventStatusOptions = [
   { value: 'interested', label: 'Interested' },
@@ -34,7 +35,15 @@ class EventItem extends React.Component {
     }
   }
 
-  handleEventStatus = eventStatus => { this.setState({ eventStatus }); };
+  handleEventStatus = eventStatus => { 
+    this.setState({ eventStatus });
+    // console.log("this is your event status! " + eventStatus); 
+    // debugger;
+    this.props.postRSVP({ 
+      eventID: this.props.event.id,
+      status: eventStatus.value  
+    });
+  };
 
   toggleExpandedInfo() {
     return e =>
@@ -126,7 +135,13 @@ const msp = (state, ownProps) => {
   };
 };
 
+const mdp = dispatch => {
+  return {
+    postRSVP: rsvp => dispatch(postRSVP(rsvp))
+  };
+};
+
 export default connect(
   msp,
-  null
+  mdp
 )(EventItem);
